@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('retours', function (Blueprint $table) {
             $table->id();
             $table->date('dateRetour');
+            $table->foreignId('client_id')
+                ->constrained('clients')
+                ->onUpdate('cascade');
+            $table->foreignId('etat_id')
+                ->constrained('etats')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Retour extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'dateRetour',
+        'client_id',
+        'etat_id',
+    ];
 }

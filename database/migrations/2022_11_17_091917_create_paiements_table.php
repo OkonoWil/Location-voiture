@@ -17,6 +17,13 @@ return new class extends Migration
             $table->id();
             $table->float('montant');
             $table->dateTime('datePaiement');
+            $table->foreignId('location_id')
+                ->constrained('locations')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

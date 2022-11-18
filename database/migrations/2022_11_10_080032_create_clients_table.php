@@ -30,7 +30,6 @@ return new class extends Migration
             $table->bigInteger('numeroPieceIdentite')->unique();
             $table->bigInteger('phone2')->nullable();
             $table->string('photo')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -5,10 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Location extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'nomrole',
+        'dateDebut',
+        'dateFin',
+        'montant',
+        'caution',
+        'client_id',
+        'voiture_id',
+        'paiement_id',
     ];
 }

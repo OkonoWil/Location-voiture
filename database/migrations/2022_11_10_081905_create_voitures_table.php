@@ -15,12 +15,17 @@ return new class extends Migration
     {
         Schema::create('voitures', function (Blueprint $table) {
             $table->id();
-            $table->string('model');
+            $table->string('modele');
+            $table->string('immatriculation')->unique();
             $table->string('numeroSerie')->unique();
             $table->string('couleur');
             $table->date('dateDeFabri');
             $table->unsignedInteger('nombrePlace');
+            $table->double('tarifParJour');
             $table->boolean('disponible')->default(true);
+            $table->foreignId('marque_id')
+                ->constrained('marques')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

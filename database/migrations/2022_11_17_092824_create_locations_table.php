@@ -13,10 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('louers', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->date('dateDebut');
             $table->date('dateFin');
+            $table->double('montant');
+            $table->double('caution');
+            $table->foreignId('client_id')
+                ->constrained('clients')
+                ->onUpdate('cascade');
+            $table->foreignId('voiture_id')
+                ->constrained('voitures')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

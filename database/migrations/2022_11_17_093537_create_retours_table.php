@@ -22,6 +22,10 @@ return new class extends Migration
             $table->foreignId('etat_id')
                 ->constrained('etats')
                 ->onUpdate('cascade');
+            $table->foreignId('location_id')
+                ->constrained('locations')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

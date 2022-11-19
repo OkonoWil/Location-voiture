@@ -30,5 +30,6 @@ class Client extends Model
         'pieceIdentite',
         'numeroPieceIdentite',
         'photo',
+        'user_id',
     ];
 }

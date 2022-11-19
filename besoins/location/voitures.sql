@@ -1,31 +1,29 @@
 -- --------------------------------------------------------
 -- Hôte:                         127.0.0.1
--- Version du serveur:           8.0.30 - MySQL Community Server - GPL
+-- Version du serveur:           5.7.33 - MySQL Community Server (GPL)
 -- SE du serveur:                Win64
--- HeidiSQL Version:             12.1.0.6537
+-- HeidiSQL Version:             11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Listage de la structure de table location. voitures
+-- Listage de la structure de la table location. voitures
 CREATE TABLE IF NOT EXISTS `voitures` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `modele` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `immatriculation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `numeroSerie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `couleur` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dateDeFabri` date NOT NULL,
-  `nombrePlace` int unsigned NOT NULL,
+  `nombrePlace` int(10) unsigned NOT NULL,
   `tarifParJour` double NOT NULL,
   `disponible` tinyint(1) NOT NULL DEFAULT '1',
-  `marque_id` bigint unsigned NOT NULL,
+  `marque_id` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -37,7 +35,6 @@ CREATE TABLE IF NOT EXISTS `voitures` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -30,6 +30,9 @@ return new class extends Migration
             $table->bigInteger('numeroPieceIdentite')->unique();
             $table->bigInteger('phone2')->nullable();
             $table->string('photo')->nullable();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

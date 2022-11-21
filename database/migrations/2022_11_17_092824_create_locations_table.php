@@ -22,6 +22,9 @@ return new class extends Migration
             $table->foreignId('client_id')
                 ->constrained('clients')
                 ->onUpdate('cascade');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade');
             $table->foreignId('voiture_id')
                 ->constrained('voitures')
                 ->onUpdate('cascade');

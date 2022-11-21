@@ -13,4 +13,9 @@ class Etat extends Model
         'nomEtat',
         'montantDegat',
     ];
+
+    public function retours()
+    {
+        return $this->hasMany(Retour::class);
+    }
 }

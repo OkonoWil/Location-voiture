@@ -15,4 +15,12 @@ class Paiement extends Model
         'location_id',
         'user_id',
     ];
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

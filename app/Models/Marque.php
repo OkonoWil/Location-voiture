@@ -13,4 +13,9 @@ class Marque extends Model
         'nomMarque',
         'paysMarque',
     ];
+
+    public function voitures()
+    {
+        return $this->hasMany(Voiture::class);
+    }
 }

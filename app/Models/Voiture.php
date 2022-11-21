@@ -19,4 +19,13 @@ class Voiture extends Model
         'tarifParJour',
         'marque_id',
     ];
+
+    public function marque()
+    {
+        return $this->belongsTo(Marque::class);
+    }
+    public function location()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

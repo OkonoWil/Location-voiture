@@ -11,4 +11,9 @@ class Role extends Model
     protected $fillable = [
         'nomrole',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(Voiture::class);
+    }
 }

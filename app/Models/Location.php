@@ -16,5 +16,22 @@ class Location extends Model
         'caution',
         'client_id',
         'voiture_id',
+        'user_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    public function voiture()
+    {
+        return $this->belongsTo(Voiture::class);
+    }
+    public function paiement()
+    {
+        return $this->hasOne(Paiement::class);
+    }
 }

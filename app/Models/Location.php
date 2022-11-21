@@ -16,6 +16,5 @@ class Location extends Model
         'caution',
         'client_id',
         'voiture_id',
-        'paiement_id',
     ];
 }

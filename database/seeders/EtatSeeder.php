@@ -19,18 +19,26 @@ class EtatSeeder extends Seeder
             [
                 'nomEtat' => 'Bon',
                 'montantDegat' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nomEtat' => 'Mauvais',
                 'montantDegat' => 0.35,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nomEtat' => 'Très mauvais',
                 'montantDegat' => 0.8,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nomEtat' => 'Voiture détruit',
                 'montantDegat' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

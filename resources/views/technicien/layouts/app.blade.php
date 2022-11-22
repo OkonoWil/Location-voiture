@@ -233,7 +233,7 @@
             data: {
                 labels: tabEtats,
                 datasets: [{
-                    label: '# of Retours',
+                    label: '# of Etat',
                     data: tabEtatsNb,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

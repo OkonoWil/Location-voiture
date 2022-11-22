@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Client;
 use App\Models\Etat;
 use App\Models\Voiture;
-use App\Models\Location;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TechnicienController extends Controller
 {

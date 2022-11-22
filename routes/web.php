@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RetourController;
+use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\TechnicienController;
 
@@ -29,3 +31,5 @@ Route::get('technicien', [TechnicienController::class, 'index'])->name('technici
 Route::post('login', [AuthController::class, 'postLogin'])->name('postlogin');
 Route::get('login', [AuthController::class, 'getLogin'])->name('getlogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::resource('retours', RetourController::class);

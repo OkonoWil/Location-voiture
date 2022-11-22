@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{env('APP_NAME')}}-Dashboad</title>
+    <title>{{env('APP_NAME')}}-@yield('tilte')</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
     <link rel="shortcut icon" href="{{Storage::url('icon/icons8_sausage_barbeque.ico')}}" type="image/x-icon">
@@ -54,11 +54,12 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
-            <a href="#" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">LARACAR</a>
-            <button
+            <a href="{{route('welcome')}}"
+                class="text-white text-3xl font-semibold uppercase hover:text-gray-300">LARACAR</a>
+            <a href="{{route('retours.create')}}"
                 class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i>retour
-            </button>
+            </a>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="{{route('technicien.index')}}"
@@ -66,7 +67,8 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Tableau de Bord
             </a>
-            <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{route('retours.index')}}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-solid fa-car mr-3"></i>
                 Retour
             </a>

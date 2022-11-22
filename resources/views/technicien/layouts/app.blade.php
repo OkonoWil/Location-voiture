@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="{{Storage::url('icon/icons8_sausage_barbeque.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('Fontawesome/css/all.css')}}">
-
+    @livewireStyles()
 
     <!-- Tailwind -->
     @vite('resources/css/app.css')
@@ -138,135 +138,7 @@
         </div>
 
     </div>
-    <form action="" id="techform" class="hidden">
-        @foreach ($techniciens as $technicien)
-        <input type="text" name="technicien[]" value="{{$technicien->name}}">
-        @endforeach
-    </form>
-    <form action="" id="retform" class="hidden">
-        @foreach ($techniciens as $technicien)
-        <input type="text" name="retours[]" value="{{$technicien->retours->count()}}">
-        @endforeach
-    </form>
-    <form action="" id="etaform" class="hidden">
-        @foreach ($etats as $etat)
-        <input type="text" name="etats[]" value="{{$etat->nomEtat}}">
-        @endforeach
-    </form>
-    <form action="" id="etaNbform" class="hidden">
-        <input type="text" name="etatsNb[]" value="{{Auth::user()->retours->where('etat_id',1)->count()}}">
-        <input type="text" name="etatsNb[]" value="{{Auth::user()->retours->where('etat_id',2)->count()}}">
-        <input type="text" name="etatsNb[]" value="{{Auth::user()->retours->where('etat_id',3)->count()}}">
-        <input type="text" name="etatsNb[]" value="{{Auth::user()->retours->where('etat_id',4)->count()}}">
-
-    </form>
-    <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
-        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    <!-- ChartJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-
-    <script>
-        const techniciens = document.getElementsByName('technicien[]');
-        let tabTech = new Array();
-        techniciens.forEach(element => {
-            tabTech.push(element.value);   
-        });
-        const retours = document.getElementsByName('retours[]');
-        let tabRetours = new Array();
-        retours.forEach(element => {
-            tabRetours.push(element.value);   
-        });
-        var chartOne = document.getElementById('chartOne');
-        var myChart = new Chart(chartOne, {
-            type: 'bar',
-            data: {
-                
-                labels: tabTech,
-                datasets: [{
-                    label: '# of Retours',
-                    data: tabRetours,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-        const etats = document.getElementsByName('etats[]');
-        let tabEtats = new Array();
-        etats.forEach(element => {
-            tabEtats.push(element.value);   
-        });
-        const etatsNb = document.getElementsByName('etatsNb[]');
-        let tabEtatsNb = new Array();
-        etatsNb.forEach(element => {
-            tabEtatsNb.push(element.value);   
-        });
-        console.log(tabEtatsNb);
-        var chartTwo = document.getElementById('chartTwo');
-        var myLineChart = new Chart(chartTwo, {
-            type: 'bar',
-            data: {
-                labels: tabEtats,
-                datasets: [{
-                    label: '# of Etat',
-                    data: tabEtatsNb,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
+    @yield('data')
 </body>
 
 </html>

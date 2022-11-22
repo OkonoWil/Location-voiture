@@ -30,18 +30,18 @@
                     @csrf
                     <div class="flex flex-col pt-4">
                         <label for="email" class="text-lg">Email</label>
-                        <input type="email" name="email" id="email" placeholder="your@email.com"
+                        <input type="email" autocomplete="off" name="email" id="email" placeholder="your@email.com"
                             value="{{old('email')}}"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                            class=" border border-blue-500 outline-blue-400 rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:shadow-outline">
                     </div>
 
-                    <div class="flex flex-col pt-4">
+                    <div class=" flex flex-col pt-4">
                         <label for="password" class="text-lg">Password</label>
                         <input type="password" name="password" id="password" placeholder="Password"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                            class="shadow appearance-none border  border-blue-500 outline-blue-400 rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:shadow-outline">
                     </div>
 
-                    <input type="submit" value="Log In"
+                    <input type="submit" value="Se connecter"
                         class="bg-blue-700 text-white font-bold text-lg hover:bg-blue-400 p-2 mt-8">
                 </form>
                 <div class="text-center pt-12 pb-12">

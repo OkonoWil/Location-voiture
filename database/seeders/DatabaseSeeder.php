@@ -27,18 +27,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoleSeeder::class);
 
-        \App\Models\User::factory()->create([
-            'name' => 'Okono',
-            'lastName' => 'Wilfried',
-            'username' => 'mrwil',
-            'email' => 'mrwil@laracar.cm',
-            'phone2' => 65914752,
-            'phone1' => 653490998,
-            'sexe' => 'homme',
-            'email_verified_at' => now(),
-            'password' => Hash::make('piratepro2.0'),
-            'role_id' => 1,
-        ]);
+        // \App\Models\User::factory()->create([
+        //     [
+        //         'name' => 'Okono',
+        //         'lastName' => 'Wilfried',
+        //         'username' => 'mrwil',
+        //     ],
+        // ]);
+        $this->call(UserSeeder::class);
 
         User::factory(10)->create();
 

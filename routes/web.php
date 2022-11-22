@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManagerController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TechnicienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::post('contact', [HomeController::class, 'postContact'])->name('home.postC
 
 
 Route::get('admin', [ManagerController::class, 'index'])->name('manager.index');
+Route::get('employe', [EmployeController::class, 'index'])->name('employe.index');
+Route::get('technicien', [TechnicienController::class, 'index'])->name('technicien.index');
 Route::post('login', [AuthController::class, 'postLogin'])->name('postlogin');
 Route::get('login', [AuthController::class, 'getLogin'])->name('getlogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');

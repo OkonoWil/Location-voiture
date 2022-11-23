@@ -53,12 +53,13 @@
 <body class="bg-gray-100 font-family-karla flex">
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-6">
-            <a href="#" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">LARACAR</a>
-            <button
-                class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i>voiture
-            </button>
+        <div class="px-6 pt-6 pb-3">
+            <a href="{{route('welcome')}}"
+                class="text-white text-3xl font-semibold uppercase hover:text-gray-300">LARACAR</a>
+            <span class=" w-full  text-white font-extrabold flex items-center justify-center pt-4 pb-0">
+                {{Auth::user()->username}} <span
+                    class="bg-green-700 ml-2 border rounded-md border-green-600 p-1">{{Auth::user()->role->nomrole}}</span>
+            </span>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="{{route('manager.index')}}"
@@ -87,10 +88,7 @@
                 Calantrier
             </a>
         </nav>
-        <span class="absolute w-full bottom-10 text-white flex items-center justify-center py-4">
-            {{Auth::user()->username}} <span
-                class="bg-green-700 ml-2 border rounded-md border-green-600 p-1">{{Auth::user()->role->nomrole}}</span>
-        </span>
+
         <a href="{{route('logout')}}"
             class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
             <i class="fa-solid fa-right-from-bracket mr-3"></i>

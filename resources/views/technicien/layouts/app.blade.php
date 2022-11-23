@@ -9,7 +9,6 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="{{Storage::url('icon/icons8_sausage_barbeque.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('Fontawesome/css/all.css')}}">
-    @livewireStyles()
 
     <!-- Tailwind -->
     @vite('resources/css/app.css')
@@ -48,18 +47,20 @@
             background: #3d68ff;
         }
     </style>
+    @livewireStyles
+
 </head>
 
 <body class="bg-gray-100 font-family-karla flex">
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-6">
+        <div class="px-6 pt-6 pb-3">
             <a href="{{route('welcome')}}"
                 class="text-white text-3xl font-semibold uppercase hover:text-gray-300">LARACAR</a>
-            <a href="{{route('retours.create')}}"
-                class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i>retour
-            </a>
+            <span class=" w-full  text-white font-extrabold flex items-center justify-center pt-4 pb-0">
+                {{Auth::user()->username}} <span
+                    class="bg-green-700 ml-2 border rounded-md border-green-600 p-1">{{Auth::user()->role->nomrole}}</span>
+            </span>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="{{route('technicien.index')}}"
@@ -74,10 +75,6 @@
             </a>
 
         </nav>
-        <span class="absolute w-full bottom-10 text-white flex items-center justify-center py-4">
-            {{Auth::user()->username}} <span
-                class="bg-green-700 ml-2 border rounded-md border-green-600 p-1">{{Auth::user()->role->nomrole}}</span>
-        </span>
         <a href="{{route('logout')}}"
             class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
             <i class="fa-solid fa-right-from-bracket mr-3"></i>
@@ -91,11 +88,13 @@
         @show
         <!-- Dropdown Nav -->
         <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-            <a href="index.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+            <a href="{{route('technicien.index')}}"
+                class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Tableau de Bord
             </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+            <a href="{{route('retours.index')}}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                 <i class="fa-solid fa-car mr-3"></i>
                 Retour
             </a>
@@ -120,7 +119,7 @@
         </header>
 
         <div class="w-full overflow-x-hidden border-t flex flex-col">
-            <main>
+            <main class="w-full flex-grow p-6">
                 @yield('content')
             </main>
 
@@ -139,6 +138,7 @@
 
     </div>
     @yield('data')
+    @livewireScripts
 </body>
 
 </html>

@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'sexe' => 'homme',
                 'photo' => 'profils/pp1.jpg',
                 'email_verified_at' => now(),
-                'password' => Hash::make('piratepro2.0'),
+                'password' => Hash::make('1234'),
                 'role_id' => 1,
             ],
             [
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'sexe' => 'Homme',
                 'photo' => 'profils/pp1.jpg',
                 'email_verified_at' => now(),
-                'password' => Hash::make('piratepro2.0'),
+                'password' => Hash::make('1234'),
                 'role_id' => 3,
             ],
             [
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
                 'sexe' => 'Femme',
                 'photo' => 'profils/pp1.jpg',
                 'email_verified_at' => now(),
-                'password' => Hash::make('piratepro2.0'),
+                'password' => Hash::make('1234'),
                 'role_id' => 2,
             ],
         ]);

@@ -32,4 +32,7 @@ Route::post('login', [AuthController::class, 'postLogin'])->name('postlogin');
 Route::get('login', [AuthController::class, 'getLogin'])->name('getlogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::resource('retours', RetourController::class);
+
+Route::prefix('technicien')->middleware(['auth', 'technicien'])->group(function () {
+    Route::resource('retours', RetourController::class);
+});

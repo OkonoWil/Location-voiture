@@ -25,6 +25,8 @@ class UserFactory extends Factory
             "lastName" => $this->faker->lastName,
             "sexe" => $this->faker->randomElement($array = array('Homme', 'Femme')),
             'email' => fake()->unique()->safeEmail(),
+            'sexe' => $this->faker->randomElement($array = array('Homme', 'Femme')),
+            "salaire" => $this->faker->randomElement($array = array(150000, 130000, 120000, 100000)),
             "phone1" => $this->faker->unique()->regexify('[6][256789][0-9]{7}'),
             "phone2" => $this->faker->regexify('[6][256789][0-9]{7}'),
             "photo" => $this->faker->imageUrl,

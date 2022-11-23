@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('sexe');
             $table->string('email')->unique();
+            $table->bigInteger('salaire');
             $table->bigInteger('phone1')->unique();
             $table->bigInteger('phone2')->nullable();
             $table->string('photo')->nullable();

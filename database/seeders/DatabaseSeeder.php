@@ -7,6 +7,8 @@ namespace Database\Seeders;
 use App\Models\Client;
 use App\Models\Location;
 use App\Models\Marque;
+use App\Models\Paiement;
+use App\Models\Retour;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Voiture;
@@ -36,9 +38,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(UserSeeder::class);
 
-        User::factory(10)->create();
+        User::factory(17)->create();
 
-        Client::factory(100)->create();
+        Client::factory(300)->create();
 
         $this->call(EtatSeeder::class);
 
@@ -52,5 +54,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PaiementSeeder::class);
 
         $this->call(RetourSeeder::class);
+
+        Location::factory(500)->create();
+        Paiement::factory(500)->create();
+        Retour::factory(300)->create();
     }
 }

@@ -20,19 +20,29 @@ use App\Http\Controllers\TechnicienController;
 */
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
-Route::get('contact', [HomeController::class, 'getcontact'])->name('home.getContact');
-Route::get('about', [HomeController::class, 'about'])->name('home.about');
-Route::post('contact', [HomeController::class, 'postContact'])->name('home.postContact');
-
-
-Route::get('admin', [ManagerController::class, 'index'])->name('manager.index');
-Route::get('employe', [EmployeController::class, 'index'])->name('employe.index');
-Route::get('technicien', [TechnicienController::class, 'index'])->name('technicien.index');
-Route::post('login', [AuthController::class, 'postLogin'])->name('postlogin');
 Route::get('login', [AuthController::class, 'getLogin'])->name('getlogin');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('login', [AuthController::class, 'postLogin'])->name('postlogin');
+Route::get('contact', [HomeController::class, 'getcontact'])->name('home.getContact');
+Route::post('contact', [HomeController::class, 'postContact'])->name('home.postContact');
+Route::get('about', [HomeController::class, 'about'])->name('home.about');
+
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 
 Route::prefix('technicien')->middleware(['auth', 'technicien'])->group(function () {
+    Route::get('/', [TechnicienController::class, 'index'])->name('technicien.index');
     Route::resource('retours', RetourController::class);
+});
+
+
+Route::prefix('manager')->middleware(['auth', 'manager'])->group(function () {
+    Route::get('/', [ManagerController::class, 'index'])->name('manager.index');
+});
+
+
+Route::prefix('employe')->middleware(['auth', 'employe'])->group(function () {
+    Route::get('/', [EmployeController::class, 'index'])->name('employe.index');
+    Route::resource('Location', LocationController::class);
 });

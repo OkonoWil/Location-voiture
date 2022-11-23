@@ -10,7 +10,6 @@ class TechnicienController extends Controller
 {
     function index()
     {
-        $voitures = Voiture::where('disponible', 0)->get();
         $notDisponible = Voiture::where('disponible', 0)->count();
         $disponible = Voiture::where('disponible', 1)->count();
         $technicien = User::where('role_id', 3)->get();

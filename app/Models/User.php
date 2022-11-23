@@ -38,6 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Paiement::class);
     }
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
     public function locations()
     {
         return $this->hasMany(Location::class);

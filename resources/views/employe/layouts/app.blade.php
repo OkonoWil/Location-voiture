@@ -70,17 +70,17 @@
             </a>
             <a href="{{route('retours.index')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fa-solid fa-car mr-3"></i>
+                <i class="fa-solid fa-user mr-3"></i>
                 Client
             </a>
             <a href="{{route('retours.index')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fa-solid fa-car mr-3"></i>
+                <i class="fa-solid fa-bookmark mr-3"></i>
                 Location
             </a>
             <a href="{{route('retours.index')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fa-solid fa-car mr-3"></i>
+                <i class="fa-brands fa-cc-amazon-pay mr-3"></i>
                 Paiement
             </a>
 
@@ -104,7 +104,15 @@
             </a>
             <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                 <i class="fa-solid fa-car mr-3"></i>
-                Retour
+                Client
+            </a>
+            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <i class="fa-solid fa-car mr-3"></i>
+                Location
+            </a>
+            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <i class="fa-solid fa-car mr-3"></i>
+                Paiement
             </a>
 
             <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">

@@ -26,7 +26,7 @@ class AuthController extends Controller
         }
         Auth::login($user, $request->remember);
         if (Auth::user()->role->nomrole == 'manager') {
-            return redirect()->intended('admin');
+            return redirect()->intended('manager');
         }
         if (Auth::user()->role->nomrole == 'employe') {
             return redirect()->intended('employe');

@@ -6,15 +6,11 @@ namespace Database\Seeders;
 
 use App\Models\Client;
 use App\Models\Location;
-use App\Models\Marque;
 use App\Models\Paiement;
 use App\Models\Retour;
-use App\Models\Role;
 use App\Models\User;
 use App\Models\Voiture;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,6 +53,6 @@ class DatabaseSeeder extends Seeder
 
         Location::factory(500)->create();
         Paiement::factory(500)->create();
-        Retour::factory(300)->create();
+        Retour::factory(500)->create();
     }
 }

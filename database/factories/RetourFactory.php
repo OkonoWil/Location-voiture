@@ -19,7 +19,7 @@ class RetourFactory extends Factory
     public function definition()
     {
         return [
-            'location_id' => $this->faker->unique->numberBetween(11, 510),
+            'location_id' => $this->faker->numberBetween(11, 510),
             'dateRetour' => $this->faker->date,
             'client_id' => $this->faker->numberBetween(1, 300),
             'user_id' => $this->faker->numberBetween(2, 20),

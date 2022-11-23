@@ -68,17 +68,17 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Tableau de Bord
             </a>
-            <a href="{{route('retours.index')}}"
+            <a href="{{route('client.index')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-solid fa-user mr-3"></i>
                 Client
             </a>
-            <a href="{{route('retours.index')}}"
+            <a href="{{route('location.index')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-solid fa-bookmark mr-3"></i>
                 Location
             </a>
-            <a href="{{route('retours.index')}}"
+            <a href="{{route('paiement.index')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-brands fa-cc-amazon-pay mr-3"></i>
                 Paiement

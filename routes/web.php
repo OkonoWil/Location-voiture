@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RetourController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\TechnicienController;
 
 /*
@@ -44,5 +47,8 @@ Route::prefix('manager')->middleware(['auth', 'manager'])->group(function () {
 
 Route::prefix('employe')->middleware(['auth', 'employe'])->group(function () {
     Route::get('/', [EmployeController::class, 'index'])->name('employe.index');
-    Route::resource('Location', LocationController::class);
+    Route::resource('location', LocationController::class);
+    Route::resource('paiement', PaiementController::class);
+    Route::resource('client', ClientController::class);
+    Route::resource('location', LocationController::class);
 });

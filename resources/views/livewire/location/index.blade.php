@@ -33,8 +33,8 @@
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Immatriculation</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">montant</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">caution</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">date</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
+                    <th class="text-center py-3 px-7 uppercase font-semibold text-sm">date</th>
+                    <th class="text-center py-3 px-6 uppercase font-semibold text-sm">Action</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">

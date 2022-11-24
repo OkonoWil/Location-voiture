@@ -6,7 +6,7 @@ use App\Models\Retour;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class RetoursList extends Component
+class RetourComp extends Component
 {
     use WithPagination;
     public $parPage = 10;
@@ -24,6 +24,6 @@ class RetoursList extends Component
     }
     public function render()
     {
-        return view('livewire.retours-list', ['retours' => Retour::where('visible', 1)->paginate($this->parPage)]);
+        return view('livewire.retour.index', ['retours' => Retour::where('visible', 1)->paginate($this->parPage)])->extends('technicien.layouts.retour')->section('contenu');
     }
 }

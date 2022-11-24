@@ -13,6 +13,7 @@ use App\Http\Controllers\TechnicienController;
 use App\Http\Livewire\ClientComp;
 use App\Http\Livewire\LocationComp;
 use App\Http\Livewire\PaiementComp;
+use App\Http\Livewire\RetourComp;
 use App\Http\Livewire\UtilisateurComp;
 
 /*
@@ -40,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('technicien')->middleware(['auth', 'technicien'])->group(function () {
     Route::get('/', [TechnicienController::class, 'index'])->name('technicien.index');
-    Route::resource('retours', RetourController::class);
+    Route::get('retour', RetourComp::class)->name('technicien.retour');
 });
 
 

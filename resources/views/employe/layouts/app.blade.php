@@ -113,7 +113,8 @@
                 <i class="fa-solid fa-bookmark mr-3"></i>
                 Location
             </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+            <a href="{{route('employe.paiement')}}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                 <i class="fa-brands fa-cc-amazon-pay mr-3"></i>
                 Paiement
             </a>
@@ -138,7 +139,7 @@
         </header>
 
         <div class="w-full overflow-x-hidden border-t flex flex-col">
-            <main class="w-full flex-grow p-1 sm:p-6">
+            <main class="text-sm sm:text-base w-full flex-grow p-1 sm:p-6">
                 @yield('content')
             </main>
 

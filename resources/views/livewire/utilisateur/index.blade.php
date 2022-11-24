@@ -44,8 +44,8 @@
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Utilsiateur</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Salaire</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">email</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Ajouté</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
+                    <th class="text-center py-3 px-7 uppercase font-semibold text-sm">Ajouté</th>
+                    <th class="text-center py-3 px-6 uppercase font-semibold text-sm">Action</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">

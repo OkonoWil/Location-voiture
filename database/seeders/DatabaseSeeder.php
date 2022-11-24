@@ -36,13 +36,13 @@ class DatabaseSeeder extends Seeder
 
         User::factory(17)->create();
 
-        Client::factory(300)->create();
+        Client::factory(400)->create();
 
         $this->call(EtatSeeder::class);
 
         $this->call(MarqueSeeder::class);
 
-        Voiture::factory(30)->create();
+        Voiture::factory(35)->create();
 
 
         $this->call(LocationSeeder::class);
@@ -51,8 +51,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RetourSeeder::class);
 
-        Location::factory(500)->create();
-        Paiement::factory(500)->create();
-        Retour::factory(500)->create();
+        Location::factory(1000)->create();
+        Paiement::factory(1000)->create();
+        Retour::factory(1000)->create();
     }
 }

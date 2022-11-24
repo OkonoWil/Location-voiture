@@ -20,7 +20,7 @@ class VoitureFactory extends Factory
     {
         return [
             'modele' => $this->faker->word,
-            'immatriculation' => $this->faker->unique()->regexify('[A-Z]{2}[0-9]{4}[A-Z]'),
+            'immatriculation' => $this->faker->unique()->regexify('LT[0-9]{4}[A-Z]{2}'),
             'numeroSerie' => $this->faker->unique()->randomNumber($nbDigits = 7),
             'couleur' => $this->faker->safeColorName,
             'dateDeFabri' => $this->faker->dateTimeBetween('-1000 week', '-600 week'),

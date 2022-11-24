@@ -86,7 +86,9 @@
                 </tr>
                 @php $i++ @endphp
                 @empty
-                <span>Aucun user enregistré...</span>
+                <tr>
+                    <td colspan="5" class="px-4 py-3 text-center">Aucun utilisateur trouvé...</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

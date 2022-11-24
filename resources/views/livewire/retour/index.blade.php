@@ -55,8 +55,9 @@
                                 class="fa-solid fa-trash text-red-500"></i></a></td>
                 </tr>
                 @php $i++ @endphp
-                @empty
-                <span>Aucun retour enregistré...</span>
+                @empty<tr>
+                    <td colspan="7" class="px-4 py-3 text-center">Aucun retour trouvé...</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

@@ -52,8 +52,9 @@
                                 class="fa-solid fa-trash text-red-500"></i></a></td>
                 </tr>
                 @php $i++ @endphp
-                @empty
-                <span>Aucun location enregistré...</span>
+                @empty<tr>
+                    <td colspan="7" class="px-4 py-3 text-center">Aucune location trouvée...</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

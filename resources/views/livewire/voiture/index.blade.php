@@ -16,17 +16,18 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <input wire:model='search' type="search" name="search" id="search" placeholder="Rechercher un client"
+                <input wire:model='search' type="search" name="search" id="search"
+                    placeholder="Entrez l'immatriculation"
                     class="w-full pl-8 pr-2 text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md  focus:placeholder-gray-500 focus:bg-white focus:border-blue-300 focus:outline-blue-300 focus:outline-2 focus:shadow-outline-purple"
                     aria-label="Search">
             </div>
             <div class="flex-row items-center hidden sm:flex">
-                <span>clients </span>
+                <span>utilisateurs </span>
                 @php
-                $n =$clients->total()<100?$clients->total():100
+                $n =$voitures->total()<20?$voitures->total():20;
                     @endphp
                     <select wire:model.lazy="parPage" name="maxShow" id="maxShow" class='font-bold mx-1 border-2'>
-                        @for($i= 10; $i <= $n ; $i+=10) <option value="{{$i}}">
+                        @for($i= 5; $i <= $n ; $i+=5) <option value="{{$i}}">
                             {{$i}}
                             </option>
                             @endfor
@@ -40,50 +41,55 @@
         <table class="min-w-full bg-white">
             <thead class="bg-blue-600 text-white">
                 <tr>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Client</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Piéce</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">N° piéce</th>
-                    <th class="text-center py-3 px-7 uppercase font-semibold text-sm">Tél</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">#</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Immatriculation</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">N° Série</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Modéle</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Couleur</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Place</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Prix/jour</th>
                     <th class="text-center py-3 px-6 uppercase font-semibold text-sm">Action</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
                 @php $i = 0 @endphp
-                @forelse ( $clients as $client )
+                @forelse ( $voitures as $voiture )
 
                 <tr class="text-gray-700 @if($i%2!=0)bg-gray-200 @endif">
-                    <td class="py-3 px-4">
-                        <div class="flex items-center text-sm">
-                            <!-- Avatar with inset shadow -->
-                            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                <img class="object-cover w-full h-full rounded-full" src="{{$client->photo}}" alt=""
-                                    loading="lazy" />
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                            </div>
-                            <div>
-                                <p class="font-semibold">{{$client->name." ".$client->lastName}}</p>
-                                <p class="px-2 py-1 text-xs text-left font-bold text-gray-600  rounded-full">
-                                    {{$client->nationalite}}
-                                </p>
-                            </div>
-                        </div>
-                    </td>
                     <td class="text-center py-3 px-4">
-                        {{$client->pieceIdentite}}
+                        {{$voiture->id}}
                     </td>
                     <td class="px-4 py-3 text-center">
-                        {{$client->numeroPieceIdentite}}
+                        {{$voiture->immatriculation}}
                     </td>
-                    <td class="px-4 py-3 text-sm text-center">
-                        {{$client->phone1}}
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        {{$voiture->numeroSerie}}
+                    </td>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        {{$voiture->modele}}
+                    </td>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        {{$voiture->couleur}}
+                    </td>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        {{$voiture->nombrePlace}}
+                    </td>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        {{$voiture->tarifParJour}}FCFA
                     </td>
                     <td class="text-center py-3 px-4"><a href="#" class=" mx-2"><i
                                 class="fa-solid fa-pen-to-square text-green-500"></i></a><a href="#" class=" mx-2"><i
                                 class="fa-solid fa-trash text-red-500"></i></a></td>
                 </tr>
                 @php $i++ @endphp
-                @empty<tr>
-                    <td colspan="5" class="px-4 py-3 text-center">Aucun client trouvée...</td>
+                @empty
+                <tr>
+                    <td colspan="5" class="px-4 py-3 text-center">Aucune voiture trouvée...</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -91,7 +97,7 @@
     </div>
 
     <div>
-        {{$clients->links()}}
+        {{$voitures->links()}}
 
     </div>
 </div>

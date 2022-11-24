@@ -1,16 +1,17 @@
 <?php
 
+use App\Http\Livewire\ClientComp;
+use App\Http\Livewire\RetourComp;
+use App\Http\Livewire\VoitureComp;
+use App\Http\Livewire\LocationComp;
+use App\Http\Livewire\PaiementComp;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\UtilisateurComp;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\TechnicienController;
-use App\Http\Livewire\ClientComp;
-use App\Http\Livewire\LocationComp;
-use App\Http\Livewire\PaiementComp;
-use App\Http\Livewire\RetourComp;
-use App\Http\Livewire\UtilisateurComp;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::prefix('technicien')->middleware(['auth', 'technicien'])->group(function 
 Route::prefix('manager')->middleware(['auth', 'manager'])->group(function () {
     Route::get('/', [ManagerController::class, 'index'])->name('manager.index');
     Route::get('utilisateur', UtilisateurComp::class)->name('manager.utilisateur');
+    Route::get('voiture', VoitureComp::class)->name('manager.voiture');
 });
 
 

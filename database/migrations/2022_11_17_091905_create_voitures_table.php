@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('modele');
             $table->string('immatriculation')->unique();
-            $table->string('numeroSerie')->unique();
+            $table->bigInteger('numeroSerie')->unique();
             $table->string('couleur');
             $table->date('dateDeFabri');
             $table->unsignedInteger('nombrePlace');

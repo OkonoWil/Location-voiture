@@ -23,8 +23,8 @@ class LocationFactory extends Factory
             'dateFin' => $this->faker->dateTimeBetween('-200 week', 'now'),
             'montant' =>  $this->faker->randomElement([45000, 50000, 70000, 100000, 130000, 150000, 200000]),
             'caution' => $this->faker->randomElement([45000, 50000, 70000, 100000, 130000, 150000, 200000]),
-            'client_id' => $this->faker->numberBetween(1, 300),
-            'voiture_id' => $this->faker->numberBetween(1, 30),
+            'client_id' => $this->faker->numberBetween(1, 400),
+            'voiture_id' => $this->faker->numberBetween(1, 35),
             'user_id' => $this->faker->numberBetween(2, 20),
         ];
     }

@@ -68,7 +68,8 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Tableau de Bord
             </a>
-            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{route('manager.voiture')}}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-solid fa-car mr-3"></i>
                 Voiture
             </a>
@@ -114,7 +115,8 @@
                 <i class="fa-solid fa-user mr-3"></i>
                 Employe
             </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+            <a href="{{route('manager.voiture')}}l"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                 <i class="fa-solid fa-car mr-3"></i>
                 Voiture
             </a>

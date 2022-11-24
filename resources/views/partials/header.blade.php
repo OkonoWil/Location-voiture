@@ -4,7 +4,7 @@
     <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
         <button @click="isOpen = !isOpen"
             class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-            <img class="w-full object-cover" src="{{Storage::url(Auth::user()->photo)}}">
+            <img class="w-full object-cover" src="{{Auth::user()->photo}}">
         </button>
         <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
         <div x-show="isOpen" class="absolute w-[150px] bg-white rounded-lg shadow-lg py-2 mt-16">

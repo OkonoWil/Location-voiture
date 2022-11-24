@@ -22,6 +22,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 22,
                 'user_id' => 2,
                 'location_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -29,6 +31,8 @@ class RetourSeeder extends Seeder
                 'location_id' => 2,
                 'client_id' => 2,
                 'user_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -36,6 +40,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 44,
                 'location_id' => 3,
                 'user_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -43,6 +49,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 5,
                 'location_id' => 4,
                 'user_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -50,6 +58,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 15,
                 'location_id' => 5,
                 'user_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -57,6 +67,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 23,
                 'location_id' => 6,
                 'user_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -64,6 +76,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 25,
                 'location_id' => 7,
                 'user_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -71,6 +85,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 20,
                 'location_id' => 8,
                 'user_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -78,6 +94,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 67,
                 'location_id' => 9,
                 'user_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'dateRetour' => now(),
@@ -85,6 +103,8 @@ class RetourSeeder extends Seeder
                 'client_id' => 31,
                 'location_id' => 10,
                 'user_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

@@ -99,7 +99,7 @@
                 </thead>
                 <tbody class="text-gray-700">
                     @php $i = 0 @endphp
-                    @forelse ( Auth::user()->retours as $retour )
+                    @forelse ( Auth::user()->retours->sortByDesc('dateRetour')->take(10) as $retour )
                     <tr @if($i%2!=0)class="bg-gray-200" @endif>
                         <td class="text-center py-3 px-4">{{$retour->id}}</td>
                         <td class="text-center py-3 px-4">{{$retour->client->name}}</td>

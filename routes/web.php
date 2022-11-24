@@ -3,12 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\RetourController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ManagerController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\TechnicienController;
 use App\Http\Livewire\ClientComp;
 use App\Http\Livewire\LocationComp;

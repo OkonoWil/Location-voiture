@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nomrole');
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }

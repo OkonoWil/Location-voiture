@@ -24,6 +24,6 @@ class RetoursList extends Component
     }
     public function render()
     {
-        return view('livewire.retours-list', ['retours' => Retour::paginate($this->parPage)]);
+        return view('livewire.retours-list', ['retours' => Retour::where('visible', 1)->paginate($this->parPage)]);
     }
 }

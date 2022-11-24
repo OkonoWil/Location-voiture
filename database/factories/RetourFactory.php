@@ -20,7 +20,7 @@ class RetourFactory extends Factory
     {
         return [
             'location_id' => $this->faker->numberBetween(11, 510),
-            'dateRetour' => $this->faker->date,
+            'dateRetour' => $this->faker->dateTimeBetween('-200 week', 'now'),
             'client_id' => $this->faker->numberBetween(1, 300),
             'user_id' => $this->faker->numberBetween(2, 20),
             'etat_id' => $this->faker->numberBetween(1, 4),

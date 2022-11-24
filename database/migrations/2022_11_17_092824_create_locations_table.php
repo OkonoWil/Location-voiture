@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('dateFin');
             $table->double('montant');
             $table->double('caution');
+            $table->boolean('visible')->default(true);
             $table->foreignId('client_id')
                 ->constrained('clients')
                 ->onUpdate('cascade');

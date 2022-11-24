@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('retours', function (Blueprint $table) {
             $table->id();
             $table->date('dateRetour');
+            $table->boolean('visible')->default(true);
             $table->foreignId('client_id')
                 ->constrained('clients')
                 ->onUpdate('cascade');

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('nombrePlace');
             $table->double('tarifParJour');
             $table->boolean('disponible')->default(true);
+            $table->boolean('visible')->default(true);
             $table->foreignId('marque_id')
                 ->constrained('marques')
                 ->onUpdate('cascade');

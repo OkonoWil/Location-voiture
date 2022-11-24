@@ -21,7 +21,7 @@ class ClientFactory extends Factory
         return [
             "name" => $this->faker->name,
             "lastName" => $this->faker->lastName,
-            "dateDeNaissance" => $this->faker->date,
+            "dateDeNaissance" => $this->faker->dateTimeBetween('-2500 week', '-1250 week'),
             "lieuDeNaissance" => $this->faker->country,
             "sexe" => $this->faker->randomElement($array = array('Homme', 'Femme')),
             "nationalite" => $this->faker->country,

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nomEtat');
             $table->float('montantDegat');
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }

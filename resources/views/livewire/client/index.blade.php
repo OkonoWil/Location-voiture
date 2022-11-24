@@ -16,18 +16,17 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <input wire:model='search' type="search" name="search" id="search"
-                    placeholder="Rechercher un utlisateur"
+                <input wire:model='search' type="search" name="search" id="search" placeholder="Rechercher un client"
                     class="w-full pl-8 pr-2 text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md  focus:placeholder-gray-500 focus:bg-white focus:border-blue-300 focus:outline-blue-300 focus:outline-2 focus:shadow-outline-purple"
                     aria-label="Search">
             </div>
             <div class="flex-row items-center hidden sm:flex">
-                <span>utilisateurs </span>
+                <span>clients </span>
                 @php
-                $n =$users->total()<20?$users->total():20;
+                $n =$clients->total()<100?$clients->total():100
                     @endphp
                     <select wire:model.lazy="parPage" name="maxShow" id="maxShow" class='font-bold mx-1 border-2'>
-                        @for($i= 5; $i <= $n ; $i+=5) <option value="{{$i}}">
+                        @for($i= 10; $i <= $n ; $i+=10) <option value="{{$i}}">
                             {{$i}}
                             </option>
                             @endfor
@@ -41,44 +40,42 @@
         <table class="min-w-full bg-white">
             <thead class="bg-blue-600 text-white">
                 <tr>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Utilsiateur</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Salaire</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">email</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Ajouté</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Client</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Piéce</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">N° piéce</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Tél</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
                 @php $i = 0 @endphp
-                @forelse ( $users as $user )
+                @forelse ( $clients as $client )
 
                 <tr class="text-gray-700 @if($i%2!=0)bg-gray-200 @endif">
                     <td class="py-3 px-4">
                         <div class="flex items-center text-sm">
                             <!-- Avatar with inset shadow -->
                             <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                <img class="object-cover w-full h-full rounded-full"
-                                    src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                    alt="" loading="lazy" />
+                                <img class="object-cover w-full h-full rounded-full" src="{{$client->photo}}" alt=""
+                                    loading="lazy" />
                                 <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                             </div>
                             <div>
-                                <p class="font-semibold">{{$user->name." ".$user->lastName}}</p>
-                                <p
-                                    class="px-2 py-1 text-xs w-20 text-center font-bold text-gray-600 @if($user->role->nomrole == 'manager')bg-blue-300 @endif @if($user->role->nomrole == 'employe')bg-green-300 @endif @if($user->role->nomrole == 'technicien') bg-yellow-300 @endif rounded-full">
-                                    {{$user->role->nomrole}}
+                                <p class="font-semibold">{{$client->name." ".$client->lastName}}</p>
+                                <p class="px-2 py-1 text-xs text-left font-bold text-gray-600  rounded-full">
+                                    {{$client->nationalite}}
                                 </p>
                             </div>
                         </div>
                     </td>
                     <td class="text-center py-3 px-4">
-                        {{$user->salaire}}FCFA
+                        {{$client->pieceIdentite}}
                     </td>
                     <td class="px-4 py-3 text-center">
-                        {{$user->email}}
+                        {{$client->numeroPieceIdentite}}
                     </td>
                     <td class="px-4 py-3 text-sm text-center">
-                        {{$user->created_at===null?'':$user->created_at->format('d-m-Y')}}
+                        {{$client->phone1}}
                     </td>
                     <td class="text-center py-3 px-4"><a href="#" class=" mx-2"><i
                                 class="fa-solid fa-pen-to-square text-green-500"></i></a><a href="#" class=" mx-2"><i
@@ -86,14 +83,14 @@
                 </tr>
                 @php $i++ @endphp
                 @empty
-                <span>Aucun user enregistré...</span>
+                <span>Aucun client enregistré...</span>
                 @endforelse
             </tbody>
         </table>
     </div>
 
     <div>
-        {{$users->links()}}
+        {{$clients->links()}}
 
     </div>
 </div>

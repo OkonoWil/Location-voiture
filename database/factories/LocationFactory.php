@@ -19,8 +19,8 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            'dateDebut' => $this->faker->date,
-            'dateFin' => $this->faker->date,
+            'dateDebut' => $this->faker->dateTimeBetween('-400 week', 'now'),
+            'dateFin' => $this->faker->dateTimeBetween('-200 week', 'now'),
             'montant' =>  $this->faker->randomElement([45000, 50000, 70000, 100000, 130000, 150000, 200000]),
             'caution' => $this->faker->randomElement([45000, 50000, 70000, 100000, 130000, 150000, 200000]),
             'client_id' => $this->faker->numberBetween(1, 300),

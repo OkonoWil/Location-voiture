@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nomMarque')->unique();
             $table->string('paysMarque');
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }

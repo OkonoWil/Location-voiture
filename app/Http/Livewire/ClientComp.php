@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
+use App\Models\Client;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class UtilisateurComp extends Component
+class ClientComp extends Component
 {
     use WithPagination;
     public $parPage = 10;
@@ -18,8 +18,18 @@ class UtilisateurComp extends Component
     }
     public function render()
     {
-        return view('livewire.utilisateur.index', [
-            "users" => User::where([
+        // dd(Client::where([
+        //     ['name', 'like', '%' . $this->search . '%'],
+        //     ['visible', '=', 0],
+        // ])
+        //     ->orWhere([
+        //         ['lastName', 'like', '%' . $this->search . '%'],
+        //         ['visible', '=', 0],
+        //     ])
+        //     ->paginate($this->parPage));
+        //dd(Client::where('name', 'like', '%' . $this->search . '%')->orWhere('lastName', 'like', '%' . $this->search . '%')->paginate($this->parPage));
+        return view('livewire.client.index', [
+            "clients" => Client::where([
                 ['name', 'like', '%' . $this->search . '%'],
                 ['visible', '=', 1],
             ])
@@ -29,7 +39,7 @@ class UtilisateurComp extends Component
                 ])
                 ->paginate($this->parPage)
         ])
-            ->extends('admin.layouts.utilisateur')
+            ->extends('employe.layouts.client')
             ->section('contenu');
     }
 }

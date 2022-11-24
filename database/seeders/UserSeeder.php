@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('1234'),
                 'role_id' => 1,
+                'created_at' => '2017-04-09 12:09:14',
             ],
             [
                 'name' => 'Fonkou',
@@ -42,6 +43,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('1234'),
                 'role_id' => 3,
+                'created_at' => '2017-08-11 12:09:14',
             ],
             [
                 'name' => 'Douanla',
@@ -55,6 +57,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('1234'),
                 'role_id' => 2,
+                'created_at' => '2017-08-11 12:09:14',
             ],
         ]);
     }

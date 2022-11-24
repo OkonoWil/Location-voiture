@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->float('montant');
             $table->dateTime('datePaiement');
+            $table->boolean('visible')->default(true);
             $table->foreignId('location_id')
                 ->constrained('locations')
                 ->onDelete('cascade')

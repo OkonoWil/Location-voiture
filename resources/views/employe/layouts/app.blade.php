@@ -47,7 +47,7 @@
             background: #3d68ff;
         }
     </style>
-    @livewireStyles
+    @livewireStyles()
 
 </head>
 
@@ -63,22 +63,22 @@
             </span>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="{{route('technicien.index')}}"
+            <a href="{{route('employe.index')}}"
                 class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Tableau de Bord
             </a>
-            <a href="{{route('client.index')}}"
+            <a href="{{route('employe.client')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-solid fa-user mr-3"></i>
                 Client
             </a>
-            <a href="{{route('location.index')}}"
+            <a href="{{route('employe.location')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-solid fa-bookmark mr-3"></i>
                 Location
             </a>
-            <a href="{{route('paiement.index')}}"
+            <a href="{{route('employe.paiement')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa-brands fa-cc-amazon-pay mr-3"></i>
                 Paiement
@@ -98,20 +98,23 @@
         @show
         <!-- Dropdown Nav -->
         <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-            <a href="index.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+            <a href="{{route('employe.index')}}"
+                class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Tableau de Bord
             </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                <i class="fa-solid fa-car mr-3"></i>
+            <a href="{{route('employe.client')}}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <i class="fa-solid fa-user mr-3"></i>
                 Client
             </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                <i class="fa-solid fa-car mr-3"></i>
+            <a href="{{route('employe.location')}}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <i class="fa-solid fa-bookmark mr-3"></i>
                 Location
             </a>
             <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                <i class="fa-solid fa-car mr-3"></i>
+                <i class="fa-brands fa-cc-amazon-pay mr-3"></i>
                 Paiement
             </a>
 
@@ -135,7 +138,7 @@
         </header>
 
         <div class="w-full overflow-x-hidden border-t flex flex-col">
-            <main>
+            <main class="w-full flex-grow p-1 sm:p-6">
                 @yield('content')
             </main>
 
@@ -154,7 +157,16 @@
 
     </div>
     @yield('data')
-    @livewireScripts
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <!-- ChartJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    @yield('data')
+    @livewireScripts()
 </body>
 
 </html>

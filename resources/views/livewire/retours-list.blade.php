@@ -3,24 +3,30 @@
 
     <div class="bg-white overflow-auto">
         <div class="flex flex-row justify-between my-1">
-            <button class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-6 rounded-xl">
-                <i class="fa-solid fa-plus mr-3"></i>
-                Retour
+            <button class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">
+                <i class="fa-solid fa-plus mr-2"></i>
+                Ajouter
             </button>
 
             <div class=" flex flex-row items-center ">
                 <span>retours </span>
-                <select wire:model.lazy="parPage" name="maxShow" id="maxShow" class='font-bold mx-1 border-2'>
-                    @for($i= 5; $i <= $retours->total(); $i+=2) <option value="{{$i}}"> {{$i}}
-                        </option>
-                        @endfor
-                </select>
-                <label for="maxShow">par page</label>
+                @php
+                $n =$retours->total()<100?$retours->total():100;
+                    @endphp
+                    <select wire:model.lazy="parPage" name="maxShow" id="maxShow" class='font-bold mx-1 border-2'>
+                        @for($i= 10; $i <= $n ; $i+=10) <option value="{{$i}}">
+                            {{$i}}
+                            </option>
+                            @endfor
+                    </select>
+                    <label for="maxShow">par page</label>
             </div>
 
         </div>
+    </div>
+    <div class="bg-white overflow-auto">
         <table class="min-w-full bg-white">
-            <thead class="bg-gray-800 text-white">
+            <thead class="bg-blue-600 text-white">
                 <tr>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">#</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Client</th>

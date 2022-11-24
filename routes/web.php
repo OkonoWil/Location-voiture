@@ -10,6 +10,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\TechnicienController;
+use App\Http\Livewire\UtilisateurComp;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::prefix('technicien')->middleware(['auth', 'technicien'])->group(function 
 
 Route::prefix('manager')->middleware(['auth', 'manager'])->group(function () {
     Route::get('/', [ManagerController::class, 'index'])->name('manager.index');
+    Route::get('utilisateur', UtilisateurComp::class)->name('manager.utilisateur');
 });
 
 

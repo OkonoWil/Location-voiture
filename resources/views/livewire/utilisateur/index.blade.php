@@ -7,8 +7,21 @@
                 <i class="fa-solid fa-plus mr-2"></i>
                 Ajouter
             </button>
-
-            <div class=" flex flex-row items-center ">
+            <div
+                class="flex relative items-center mx-2 sm:w-64 h-14 focus:border-blue-500 focus:borber- focus:outline-none focus:shadow-outline-purple">
+                <div class="absolute nset-y-0 flex items-center pl-2">
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <input wire:model='search' type="search" name="search" id="search"
+                    placeholder="Rechercher un utlisateur"
+                    class="w-full pl-8 pr-2 text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md  focus:placeholder-gray-500 focus:bg-white focus:border-blue-300 focus:outline-blue-300 focus:outline-2 focus:shadow-outline-purple"
+                    aria-label="Search">
+            </div>
+            <div class="flex-row items-center hidden sm:flex">
                 <span>utilisateurs </span>
                 @php
                 $n =$users->total()<20?$users->total():20;
@@ -38,18 +51,8 @@
             <tbody class="text-gray-700">
                 @php $i = 0 @endphp
                 @forelse ( $users as $user )
-                {{-- <tr @if($i%2!=0)class="bg-gray-200" @endif>
-                    <td class="text-center py-3 px-4">{{$user->id}}</td>
-                    <td class="text-center py-3 px-4">{{$user->name}}</td>
-                    <td class="text-center py-3 px-4">{{$user->lastName}}</td>
-                    <td class="text-center py-3 px-4">{{$user->role->nomrole}}</td>
-                    <td class="text-center py-3 px-4">{{$user->salaire}}FCFA</td>
-                    <td class="text-center py-3 px-4">{{$user->created_at}}</td>
-                    <td class="text-center py-3 px-4"><a href="#" class=" mx-2"><i
-                                class="fa-solid fa-pen-to-square text-green-500"></i></a><a href="#" class=" mx-2"><i
-                                class="fa-solid fa-pen-to-square text-green-500"></i></a></td>
-                </tr> --}}
-                <tr class="text-gray-700 ">
+
+                <tr class="text-gray-700 @if($i%2!=0)bg-gray-200 @endif">
                     <td class="py-3 px-4">
                         <div class="flex items-center text-sm">
                             <!-- Avatar with inset shadow -->

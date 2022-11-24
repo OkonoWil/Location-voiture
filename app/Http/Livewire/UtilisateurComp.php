@@ -10,7 +10,7 @@ class UtilisateurComp extends Component
 {
     use WithPagination;
     public $parPage = 10;
-
+    public $search;
     //Mise à jour de l'afffichage par page
     public function updatingParPage()
     {
@@ -19,7 +19,7 @@ class UtilisateurComp extends Component
     public function render()
     {
         return view('livewire.utilisateur.index', [
-            "users" => User::paginate($this->parPage)
+            "users" => User::where('name', 'like', '%' . $this->search . '%')->orWhere('lastName', 'like', '%' . $this->search . '%')->paginate($this->parPage)
         ])
             ->extends('admin.layouts.utilisateur')
             ->section('contenu');

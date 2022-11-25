@@ -71,6 +71,12 @@ class UtilisateurComp extends Component
     {
         $validatedData = $this->validate();
         $validatedData['newUser']['password'] = Hash::make('1234');
+        // $filename = 'recette' . time() . 'user' . $request->user()->id . '.' . $request->image->extension();
+        // $path = $request->image->storeAs(
+        //     'images/recettes',
+        //     $filename,
+        //     'public'
+        // );
         User::create($validatedData['newUser']);
     }
 }

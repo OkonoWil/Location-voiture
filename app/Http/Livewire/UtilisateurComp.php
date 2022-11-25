@@ -15,20 +15,31 @@ class UtilisateurComp extends Component
     use WithPagination;
     use WithFileUploads;
     public $parPage = 10;
-    public $isBtnAddClicked = true;
+    public $isBtnAddClicked = false;
     public $search;
     public $newUser = [];
+
+    public $name;
+    public $lastName;
+    public $email;
+    public $username;
+    public $role_id;
+    public $sexe;
+    public $photo;
+    public $phone1;
+    public $phone2;
+    public $salaire;
     protected $rules = [
-        'newUser.name' => 'required',
-        'newUser.lastName' => 'required',
-        'newUser.email' => 'required|email|unique:users,email',
-        'newUser.username' => 'required|unique:users,username',
-        'newUser.role_id' => 'required',
-        'newUser.sexe' => 'required',
-        'newUser.photo' => 'image|max:1024',
-        'newUser.phone1' => 'required|numeric|min_digits:8',
-        'newUser.phone2' => 'numeric|min_digits:8',
-        'newUser.salaire' => 'required|numeric|min_digits:5',
+        'name' => 'required',
+        'lastName' => 'required',
+        'email' => 'required|email|unique:users,email',
+        'username' => 'required|unique:users,username',
+        'role_id' => 'required',
+        'sexe' => 'required',
+        'photo' => 'required|image|max:1024',
+        'phone1' => 'required|numeric|min_digits:8',
+        'phone2' => 'nullable|numeric|min_digits:8',
+        'salaire' => 'required|numeric|min_digits:5',
     ];
     //Mise à jour de l'afffichage par page
     public function updatingParPage()
@@ -70,13 +81,16 @@ class UtilisateurComp extends Component
     public function addUser()
     {
         $validatedData = $this->validate();
-        $validatedData['newUser']['password'] = Hash::make('1234');
-        // $filename = 'recette' . time() . 'user' . $request->user()->id . '.' . $request->image->extension();
-        // $path = $request->image->storeAs(
-        //     'images/recettes',
-        //     $filename,
-        //     'public'
-        // );
-        User::create($validatedData['newUser']);
+        $validatedData['password'] = Hash::make('1234');
+        $filename = 'user' . User::latest()->first()->id + 1 . '.' . $validatedData['photo']->extension();
+        $path = $validatedData['photo']->storeAs(
+            'profils',
+            $filename,
+            'public'
+        );
+        $validatedData['photo'] = $path;
+        User::create(
+            $validatedData
+        );
     }
 }

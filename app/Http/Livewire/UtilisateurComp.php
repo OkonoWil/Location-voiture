@@ -92,5 +92,15 @@ class UtilisateurComp extends Component
         User::create(
             $validatedData
         );
+        $this->name = "";
+        $this->lastName = "";
+        $this->email = "";
+        $this->username = "";
+        $this->role_id = "";
+        $this->sexe = "";
+        $this->photo = "";
+        $this->phone1 = "";
+        $this->phone2 = "";
+        $this->salaire = "";
     }
 }

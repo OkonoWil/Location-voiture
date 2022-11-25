@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     function welcome()
     {
-        return redirect()->route('getlogin');
+        return view('home.welcome');
     }
     function getContact()
     {

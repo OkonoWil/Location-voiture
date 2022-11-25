@@ -32,13 +32,19 @@
                         <label for="email" class="text-lg">Email</label>
                         <input type="email" autocomplete="off" name="email" id="email" placeholder="your@email.com"
                             value="{{old('email')}}"
-                            class=" border border-blue-500 outline-blue-400 rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:shadow-outline">
+                            class="@error('email') border-red-500 @enderror border border-blue-500 outline-blue-400 rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:shadow-outline">
+                        @error('email')
+                        <span class="text-sm text-red-500">{{$message}}</span>
+                        @enderror
                     </div>
 
                     <div class=" flex flex-col pt-4">
                         <label for="password" class="text-lg">Password</label>
                         <input type="password" name="password" id="password" placeholder="Password"
-                            class="shadow appearance-none border  border-blue-500 outline-blue-400 rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:shadow-outline">
+                            class="@error('email') border-red-500 @enderror shadow appearance-none border  border-blue-500 outline-blue-400 rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:shadow-outline">
+                        @error('password')
+                        <span class="text-sm text-red-500">{{$message}}</span>
+                        @enderror
                     </div>
 
                     <input type="submit" value="Se connecter"

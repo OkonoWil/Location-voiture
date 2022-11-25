@@ -115,7 +115,7 @@
                 <i class="fa-solid fa-user mr-3"></i>
                 Employe
             </a>
-            <a href="{{route('manager.voiture')}}l"
+            <a href="{{route('manager.voiture')}}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                 <i class="fa-solid fa-car mr-3"></i>
                 Voiture

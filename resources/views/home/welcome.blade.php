@@ -58,7 +58,7 @@
             </button>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="index.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="index.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
@@ -70,7 +70,7 @@
                 <i class="fas fa-table mr-3"></i>
                 Tables
             </a>
-            <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="forms.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
                 Forms
             </a>
@@ -91,7 +91,7 @@
         </a>
     </aside>
 
-    <div class="w-full flex flex-col h-screen overflow-y-hidden">
+    <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
         <!-- Desktop Header -->
         <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
@@ -122,7 +122,8 @@
 
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="index.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                <a href="index.html"
+                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
@@ -136,8 +137,7 @@
                     <i class="fas fa-table mr-3"></i>
                     Tables
                 </a>
-                <a href="forms.html"
-                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="forms.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
                     Forms
                 </a>
@@ -173,110 +173,100 @@
             </button> -->
         </header>
 
-        <div class="w-full overflow-x-hidden border-t flex flex-col">
+        <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Dashboard</h1>
+                <h1 class="w-full text-3xl text-black pb-6">Forms</h1>
 
-                <div class="flex flex-wrap mt-6">
-                    <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
-                        <p class="text-xl pb-3 flex items-center">
-                            <i class="fas fa-plus mr-3"></i> Monthly Reports
+                <div class="flex flex-wrap">
+                    <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
+                        <p class="text-xl pb-6 flex items-center">
+                            <i class="fas fa-list mr-3"></i> Contact Form
                         </p>
-                        <div class="p-6 bg-white">
-                            <canvas id="chartOne" width="400" height="200"></canvas>
+                        <div class="leading-loose">
+                            <form class="p-10 bg-white rounded shadow-xl">
+                                <div class="">
+                                    <label class="block text-sm text-gray-600" for="name">Name</label>
+                                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="name"
+                                        name="name" type="text" required="" placeholder="Your Name" aria-label="Name">
+                                </div>
+                                <div class="mt-2">
+                                    <label class="block text-sm text-gray-600" for="email">Email</label>
+                                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="email"
+                                        name="email" type="text" required="" placeholder="Your Email"
+                                        aria-label="Email">
+                                </div>
+                                <div class="mt-2">
+                                    <label class=" block text-sm text-gray-600" for="message">Message</label>
+                                    <textarea class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded" id="message"
+                                        name="message" rows="6" required="" placeholder="Your inquiry.."
+                                        aria-label="Email"></textarea>
+                                </div>
+                                <div class="mt-6">
+                                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                                        type="submit">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
-                        <p class="text-xl pb-3 flex items-center">
-                            <i class="fas fa-check mr-3"></i> Resolved Reports
-                        </p>
-                        <div class="p-6 bg-white">
-                            <canvas id="chartTwo" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Latest Reports
-                    </p>
-                    <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
+                        <p class="text-xl pb-6 flex items-center">
+                            <i class="fas fa-list mr-3"></i> Checkout Form
+                        </p>
+                        <div class="leading-loose">
+                            <form class="p-10 bg-white rounded shadow-xl">
+                                <p class="text-lg text-gray-800 font-medium pb-4">Customer information</p>
+                                <div class="">
+                                    <label class="block text-sm text-gray-600" for="cus_name">Name</label>
+                                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name"
+                                        name="cus_name" type="text" required="" placeholder="Your Name"
+                                        aria-label="Name">
+                                </div>
+                                <div class="mt-2">
+                                    <label class="block text-sm text-gray-600" for="cus_email">Email</label>
+                                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="cus_email"
+                                        name="cus_email" type="text" required="" placeholder="Your Email"
+                                        aria-label="Email">
+                                </div>
+                                <div class="mt-2">
+                                    <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
+                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email"
+                                        name="cus_email" type="text" required="" placeholder="Street"
+                                        aria-label="Email">
+                                </div>
+                                <div class="mt-2">
+                                    <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
+                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email"
+                                        name="cus_email" type="text" required="" placeholder="City" aria-label="Email">
+                                </div>
+                                <div class="inline-block mt-2 w-1/2 pr-1">
+                                    <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
+                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email"
+                                        name="cus_email" type="text" required="" placeholder="Country"
+                                        aria-label="Email">
+                                </div>
+                                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                                    <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
+                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email"
+                                        name="cus_email" type="text" required="" placeholder="Zip" aria-label="Email">
+                                </div>
+                                <p class="text-lg text-gray-800 font-medium py-4">Payment information</p>
+                                <div class="">
+                                    <label class="block text-sm text-gray-600" for="cus_name">Card</label>
+                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_name"
+                                        name="cus_name" type="text" required="" placeholder="Card Number MM/YY CVC"
+                                        aria-label="Name">
+                                </div>
+                                <div class="mt-6">
+                                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                                        type="submit">$3.00</button>
+                                </div>
+                            </form>
+                        </div>
+                        <p class="pt-6 text-gray-600">
+                            Source: <a class="underline"
+                                href="https://tailwindcomponents.com/component/checkout-form">https://tailwindcomponents.com/component/checkout-form</a>
+                        </p>
                     </div>
                 </div>
             </main>
@@ -293,87 +283,6 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    <!-- ChartJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-
-    <script>
-        var chartOne = document.getElementById('chartOne');
-        var myChart = new Chart(chartOne, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var chartTwo = document.getElementById('chartTwo');
-        var myLineChart = new Chart(chartTwo, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>

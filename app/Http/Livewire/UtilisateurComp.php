@@ -107,4 +107,26 @@ class UtilisateurComp extends Component
 
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur créé avec succès!"]);
     }
+
+    public function confirmDestroy($name, $user_id)
+    {
+        $this->dispatchBrowserEvent(
+            "showConfirmMessage",
+            [
+                "Message" => "Voulez-vous vraiment supprimer l'utilisateur $name de la liste !",
+                "title" => "êtes-vous sûr?",
+                "icon" => "warning",
+                "data" => [
+                    "user_id" => $user_id,
+                ],
+            ]
+        );
+    }
+    public function deleteUser($user_id)
+    {
+        $user = User::find($user_id);
+        $user->visible = 0;
+        $user->save();
+        $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur supprimé avec succès!"]);
+    }
 }

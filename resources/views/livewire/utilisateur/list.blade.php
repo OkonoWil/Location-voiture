@@ -76,9 +76,11 @@
                 <td class="px-4 py-3 text-sm text-center">
                     {{$user->created_at===null?'':$user->created_at->diffForHumans()}}
                 </td>
-                <td class="text-center py-3 px-4"><a href="#" class=" mx-2"><i
-                            class="fa-solid fa-pen-to-square text-green-500"></i></a><a href="#" class=" mx-2"><i
-                            class="fa-solid fa-trash text-red-500"></i></a></td>
+                <td class="text-center py-3 px-4">
+                    <button class=" mx-2"><i class="fa-solid fa-pen-to-square text-green-500"></i></button>
+                    <button wire:click="confirmDestroy('{{$user->name}}','{{$user->id}}')" class=" mx-2"><i
+                            class="fa-solid fa-trash text-red-500"></i></button>
+                </td>
             </tr>
             @php $i++ @endphp
             @empty

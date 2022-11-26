@@ -1,10 +1,17 @@
 <div>
 
-    @if ($isBtnAddClicked)
+    @if ($isBtnCreateClicked)
     @include('livewire.utilisateur.create')
-    @else
+    @endif
+
+    @if($isBtnEditClicked)
+    @include('livewire.utilisateur.edit')
+    @endif
+
+    @if ($isBtnListClicked)
     @include('livewire.utilisateur.list')
     @endif
+
 </div>
 <script>
     window.addEventListener("showSuccessMessage", event=>{    

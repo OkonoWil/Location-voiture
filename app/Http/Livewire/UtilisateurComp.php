@@ -7,6 +7,7 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +16,9 @@ class UtilisateurComp extends Component
     use WithPagination;
     use WithFileUploads;
     public $parPage = 10;
-    public $isBtnAddClicked = false;
+    public $isBtnListClicked = true;
+    public $isBtnCreateClicked = false;
+    public $isBtnEditClicked = false;
     public $search;
     public $newUser = [];
 
@@ -29,27 +32,93 @@ class UtilisateurComp extends Component
     public $phone1;
     public $phone2;
     public $salaire;
-    protected $rules = [
-        'name' => 'required',
-        'lastName' => 'required',
-        'email' => 'required|email|unique:users,email',
-        'username' => 'required|unique:users,username',
-        'role_id' => 'required',
-        'sexe' => 'required',
-        'photo' => 'required|image|max:1024',
-        'phone1' => 'required|numeric|min_digits:8',
-        'phone2' => 'nullable|numeric|min_digits:8',
-        'salaire' => 'required|numeric|min_digits:5',
-    ];
+    public $user_id;
+    public $current_user;
+
+    protected $rules;
+    public function rules()
+    {
+        if ($this->isBtnCreateClicked) {
+            return [
+                'name' => 'required',
+                'lastName' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'username' => 'required|unique:users,username',
+                'role_id' => 'required',
+                'sexe' => 'required',
+                'photo' => 'required|image|max:1024',
+                'phone1' => 'required|unique|numeric|min_digits:8',
+                'phone2' => 'nullable|numeric|min_digits:8',
+                'salaire' => 'required|numeric|min_digits:5',
+            ];
+        }
+        return [
+            'name' => 'required',
+            'lastName' => 'required',
+            'email' => ['required', 'email', Rule::unique("users", "email")->ignore($this->user_id)],
+            'username' => ['required', Rule::unique("users", "username")->ignore($this->user_id)],
+            'role_id' => 'required',
+            'sexe' => 'required',
+            'phone1' => ['required', 'min_digits:8', Rule::unique("users", "phone1")->ignore($this->user_id)],
+            'phone2' => 'nullable|numeric|min_digits:8',
+            'salaire' => 'required|numeric|min_digits:5',
+        ];
+    }
+
+
     //Mise à jour de l'afffichage par page
     public function updatingParPage()
     {
         $this->resetPage();
     }
-    public function updatingIsBtnAddClicked()
+    public function updatingIsBtnListClicked()
     {
         $this->resetPage();
     }
+    public function updatingIsBtnEditClicked()
+    {
+        $this->resetPage();
+    }
+    public function updatingIsBtnCreateClicked()
+    {
+        $this->resetPage();
+    }
+
+    //Navigation entre les vues
+    function goToAddUser()
+    {
+        $this->isBtnListClicked = false;
+        $this->isBtnCreateClicked = true;
+        $this->isBtnEditClicked = false;
+    }
+    public function goToListUser()
+    {
+        $this->isBtnListClicked = true;
+        $this->isBtnCreateClicked = false;
+        $this->isBtnEditClicked = false;
+    }
+    public function goToEditUser($user)
+    {
+
+        $this->id = $user['id'];
+        $this->name = $user['name'];
+        $this->lastName = $user["lastName"];
+        $this->email = $user["email"];
+        $this->username = $user['username'];
+        $this->role_id = $user["role_id"];
+        $this->sexe = $user['sexe'];
+        $this->photo = $user['photo'];
+        $this->phone1 = $user['phone1'];
+        $this->phone2 = $user['phone2'];
+        $this->salaire = $user['salaire'];
+        $this->current_user = $user;
+
+        $this->isBtnListClicked = false;
+        $this->isBtnCreateClicked = false;
+        $this->isBtnEditClicked = true;
+    }
+
+
     public function render()
     {
 
@@ -70,18 +139,11 @@ class UtilisateurComp extends Component
     }
 
 
-    function goToAddUser()
-    {
-        $this->isBtnAddClicked = true;
-    }
-    public function goToListUser()
-    {
-        $this->isBtnAddClicked = false;
-    }
 
 
     public function addUser()
     {
+        $this->rules = $this->rules();
         $validatedData = $this->validate();
         $validatedData['password'] = Hash::make('1234');
         $filename = 'user' . User::latest()->first()->id + 1 . '.' . $validatedData['photo']->extension();
@@ -106,6 +168,14 @@ class UtilisateurComp extends Component
         $this->salaire = "";
 
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur créé avec succès!"]);
+    }
+
+    public function updateUser()
+    {
+        $validatedData = $this->validate();
+        $this->current_user->updated_at = now();
+        $this->current_user->save();
+        $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Les informations de l'tilisateur ont été mise à jour avec succès!"]);
     }
 
     public function confirmDestroy($name, $user_id)

@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'email' => 'mrwil@laracar.cm',
                 'phone1' => 653490998,
                 'salaire' => 500000,
-                'sexe' => 'homme',
+                'sexe' => 'Homme',
                 'photo' => 'http://location.test/storage/profils/pp1.jpg',
                 'email_verified_at' => now(),
                 'password' => Hash::make('1234'),

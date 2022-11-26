@@ -88,10 +88,10 @@
                     <input
                         class="w-full px-2 sm:px-5  py-1 sm:py-2 text-gray-700 bg-gray-200 @error('photo') border border-red-500 @enderror rounded focus:outline-blue-500"
                         id="photo" wire:model="photo" type="file" placeholder="Photo" aria-label="photo">
+                    @error('photo')
+                    <span class="text-red-500">{{$message}}</span>
+                    @enderror
                 </div>
-                @error('photo')
-                <span class="text-red-500">{{$message}}</span>
-                @enderror
             </div>
             <div class="flex w-full flex-col md:flex-row">
                 <div class="w-full md:w-1/2 sm:mr-1 mt-2">

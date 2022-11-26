@@ -1,12 +1,12 @@
-<div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
+<div class="w-full 2xl:w-2/3 lg:w-4/5 mt-6 pl-0 lg:pl-2">
     <p class="text-xl pb-6 flex items-center">
         <i class="fas fa-list mr-3"></i> Formulaire
     </p>
     <div class="leading-loose">
         <form class="p-10 bg-white rounded shadow-xl" role="form" wire:submit.prevent='addUser()'>
             <p class="text-lg text-gray-800 font-medium pb-2">Information de l'employé</p>
-            <div class="flex w-full flex-col sm:flex-row">
-                <div class="w-full sm:w-1/2 sm:mr-1 mt-2">
+            <div class="flex w-full flex-col md:flex-row">
+                <div class="w-full md:w-1/2 sm:mr-1 mt-2">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="name">Nom</label>
                     <input
                         class="w-full px-2 sm:px-5  py-1 sm:py-2 text-gray-700 @error('name') border border-red-500 @enderror bg-gray-200 rounded focus:outline-blue-500"
@@ -15,7 +15,7 @@
                     <span class="text-red-500">{{$message}}</span>
                     @enderror
                 </div>
-                <div class="w-full sm:w-1/2 sm:ml-1 mt-2">
+                <div class="w-full md:w-1/2 sm:ml-1 mt-2">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="lastName">Prénom</label>
                     <input
                         class="w-full px-2 sm:px-5 py-1 sm:py-2 text-gray-700 bg-gray-200 @error('lastName') border border-red-500 @enderror rounded focus:outline-blue-500"
@@ -25,8 +25,8 @@
                     @enderror
                 </div>
             </div>
-            <div class="flex w-full flex-col sm:flex-row">
-                <div class="mt-2 w-full sm:w-1/2 sm:mr-1">
+            <div class="flex w-full flex-col md:flex-row">
+                <div class="mt-2 w-full md:w-1/2 sm:mr-1">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="email">Email</label>
                     <input
                         class="w-full px-2 sm:px-5  py-1 sm:py-2 text-gray-700 bg-gray-200 @error('email') border border-red-500 @enderror rounded focus:outline-blue-500"
@@ -36,7 +36,7 @@
                     @enderror
                 </div>
 
-                <div class="mt-2 w-full sm:w-1/2 sm:ml-1">
+                <div class="mt-2 w-full md:w-1/2 sm:ml-1">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="username">Nom
                         d'utilisateur</label>
                     <input
@@ -64,8 +64,8 @@
                     @enderror
                 </div>
             </div>
-            <div class="flex w-full flex-col sm:flex-row">
-                <div class="mt-2 w-full sm:w-1/2 sm:mr-1">
+            <div class="flex w-full flex-col md:flex-row">
+                <div class="mt-2 w-full md:w-1/2 sm:mr-1">
                     <span class="hidden sm:block text-sm sm:text-base text-gray-600">Sexe</span>
                     <div
                         class="flex flex-wrap flex-row justify-between sm:justify-around w-full px-2 sm:px-5  @error('sexe') border border-red-500 @enderror py-1 sm:py-2 text-gray-700 bg-gray-200 rounded ">
@@ -83,7 +83,7 @@
                     <span class="text-red-500">{{$message}}</span>
                     @enderror
                 </div>
-                <div class="mt-2 w-full sm:w-1/2 sm:ml-1">
+                <div class="mt-2 w-full md:w-1/2 sm:ml-1">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="photo">Photo</label>
                     <input
                         class="w-full px-2 sm:px-5  py-1 sm:py-2 text-gray-700 bg-gray-200 @error('photo') border border-red-500 @enderror rounded focus:outline-blue-500"
@@ -93,8 +93,8 @@
                 <span class="text-red-500">{{$message}}</span>
                 @enderror
             </div>
-            <div class="flex w-full flex-col sm:flex-row">
-                <div class="w-full sm:w-1/2 sm:mr-1 mt-2">
+            <div class="flex w-full flex-col md:flex-row">
+                <div class="w-full md:w-1/2 sm:mr-1 mt-2">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="phone1">Numéro</label>
                     <input
                         class="w-full px-2 sm:px-5  py-1 sm:py-2 text-gray-700 bg-gray-200 @error('phone1') border border-red-500 @enderror rounded focus:outline-blue-500"
@@ -103,7 +103,7 @@
                     <span class="text-red-500">{{$message}}</span>
                     @enderror
                 </div>
-                <div class="w-full sm:w-1/2 sm:ml-1 mt-2">
+                <div class="w-full md:w-1/2 sm:ml-1 mt-2">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="phone2">Numéro
                         secondaire</label>
                     <input
@@ -123,9 +123,14 @@
                 <span class="text-red-500">{{$message}}</span>
                 @enderror
             </div>
-            <div class="mt-6">
+            <div class="mt-6 flex flex-wrap flex-row justify-around">
                 <button class="px-4 font-extralight py-1 text-white  tracking-wider bg-green-800 rounded"
                     type="submit">Enregistrer</button>
+                <button class="px-4 font-extralight py-1 text-white  tracking-wider bg-blue-800 rounded" type="button"
+                    wire:click='goToListUser()'><span class="md:hidden">Retour</span><span
+                        class="hidden md:inline">Retouner
+                        à la liste des
+                        utilisateurs</span></button>
             </div>
         </form>
     </div>

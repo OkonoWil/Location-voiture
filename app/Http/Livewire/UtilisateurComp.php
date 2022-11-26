@@ -52,6 +52,7 @@ class UtilisateurComp extends Component
     }
     public function render()
     {
+
         return view('livewire.utilisateur.index', [
             "users" => User::where([
                 ['name', 'like', '%' . $this->search . '%'],
@@ -75,6 +76,7 @@ class UtilisateurComp extends Component
     }
     public function goToListUser()
     {
+        $this->isBtnAddClicked = false;
     }
 
 
@@ -102,5 +104,7 @@ class UtilisateurComp extends Component
         $this->phone1 = "";
         $this->phone2 = "";
         $this->salaire = "";
+
+        $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur créé avec succès!"]);
     }
 }

@@ -12,7 +12,7 @@
 
 
     <!-- Tailwind -->
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -48,7 +48,7 @@
             background: #3d68ff;
         }
     </style>
-    @livewireStyles()
+    @livewireStyles
 </head>
 
 <body class="bg-gray-100 font-family-karla flex">
@@ -181,7 +181,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
         integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     @yield('data')
-    @livewireScripts()
+    @livewireScripts
 </body>
 
 </html>

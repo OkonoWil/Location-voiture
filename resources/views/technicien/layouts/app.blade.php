@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('Fontawesome/css/all.css')}}">
 
     <!-- Tailwind -->
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 

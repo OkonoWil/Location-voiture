@@ -20,7 +20,6 @@ class UtilisateurComp extends Component
     public $isBtnCreateClicked = false;
     public $isBtnEditClicked = false;
     public $search;
-    public $newUser = [];
 
     public $name;
     public $lastName;
@@ -35,7 +34,20 @@ class UtilisateurComp extends Component
     public $user_id;
     public $current_user;
 
-    protected $rules;
+    public function corbeille()
+    {
+        $this->name = "";
+        $this->lastName = "";
+        $this->email = "";
+        $this->username = "";
+        $this->role_id = "";
+        $this->sexe = "";
+        $this->photo = "";
+        $this->phone1 = "";
+        $this->phone2 = "";
+        $this->salaire = "";
+    }
+
     public function rules()
     {
         if ($this->isBtnCreateClicked) {
@@ -47,7 +59,7 @@ class UtilisateurComp extends Component
                 'role_id' => 'required',
                 'sexe' => 'required',
                 'photo' => 'required|image|max:1024',
-                'phone1' => 'required|unique|numeric|min_digits:8',
+                'phone1' => 'required|unique:users,phone1|numeric|min_digits:8',
                 'phone2' => 'nullable|numeric|min_digits:8',
                 'salaire' => 'required|numeric|min_digits:5',
             ];
@@ -143,7 +155,6 @@ class UtilisateurComp extends Component
 
     public function addUser()
     {
-        $this->rules = $this->rules();
         $validatedData = $this->validate();
         $validatedData['password'] = Hash::make('1234');
         $filename = 'user' . User::latest()->first()->id + 1 . '.' . $validatedData['photo']->extension();
@@ -156,17 +167,8 @@ class UtilisateurComp extends Component
         User::create(
             $validatedData
         );
-        $this->name = "";
-        $this->lastName = "";
-        $this->email = "";
-        $this->username = "";
-        $this->role_id = "";
-        $this->sexe = "";
-        $this->photo = "";
-        $this->phone1 = "";
-        $this->phone2 = "";
-        $this->salaire = "";
 
+        $this->corbeille();
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur créé avec succès!"]);
     }
 
@@ -206,6 +208,7 @@ class UtilisateurComp extends Component
     {
         $user = User::find($user_id);
         $user->visible = 0;
+        $user->updated_at = now();
         $user->save();
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur supprimé avec succès!"]);
     }
@@ -218,5 +221,28 @@ class UtilisateurComp extends Component
             "imageAlt" => "photo id" . $id,
             "imageUrl" => $photo,
         ]);
+    }
+    public function resetPassword()
+    {
+        $user = User::find($this->user_id);
+        $user->password = Hash::make('password');
+        $user->updated_at = now();
+        $user->save();
+        $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Mot de passe réinitialiser avec succès!"]);
+    }
+    public function updatePicture()
+    {
+        $validatedData = $this->validate(['photo' => 'required|image|max:1024',]);
+        $filename = 'user' . User::latest()->first()->id + 1 . '.' . $validatedData['photo']->extension();
+        $path = $validatedData['photo']->storeAs(
+            'profils',
+            $filename,
+            'public'
+        );
+        $user = User::find($this->user_id);
+        $user->photo = $path;
+        $user->updated_at = now();
+        $user->save();
+        $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Photo de profil mise à jour avec succès!"]);
     }
 }

@@ -14,8 +14,7 @@
 
 </div>
 <script>
-  window.addEventListener("showSuccessMessage", event=>{    
-        console.log(event)
+  window.addEventListener("showSuccessMessage", event=>{ 
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -25,8 +24,7 @@
         })
 
     })
-    window.addEventListener("showConfirmMessage", event=>{  
-        console.log(event)
+    window.addEventListener("showConfirmMessage", event=>{
         Swal.fire({
             title: event.detail.title,
             text: event.detail.Message,
@@ -44,7 +42,6 @@
 
     })
     window.addEventListener("showPictureMessage", event=>{  
-        console.log(event)
         Swal.fire({
             title: event.detail.title,
             text: event.detail.text,

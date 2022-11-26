@@ -1,5 +1,4 @@
 <div class="bg-white overflow-auto">
-    @dd(Storage::Auth->user()->photo)
     <div class="flex flex-wrap flex-row justify-between my-1">
         <button wire:click='goToAddUser'
             class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">
@@ -55,8 +54,8 @@
                     <div class="flex items-center text-sm">
                         <!-- Avatar with inset shadow -->
                         <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                            <img class="object-cover w-full h-full rounded-full" src="{{$user->photo}}" alt=""
-                                loading="lazy" />
+                            <img class="object-cover w-full h-full rounded-full" src="{{Storage::url($user->photo)}}"
+                                alt="" loading="lazy" />
                             <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
@@ -79,7 +78,7 @@
                 </td>
                 <td class="text-center py-3 px-4">
                     <button title="show"
-                        wire:click="showPicture('{{$user->name." ".$user->lastName}}','{{$user->role->nomrole}}', '{{$user->photo}}', '{{$user->id}}')"
+                        wire:click="showPicture('{{$user->name." ".$user->lastName}}','{{$user->role->nomrole}}', '{{Storage::url($user->photo)}}', '{{$user->id}}')"
                         class=" mx-2"><i class="fa-regular fa-image text-blue-500"></i></button>
                     <button title="edit" wire:click="goToEditUser({{$user}})" class=" mx-2"><i
                             class="fa-solid fa-pen-to-square text-green-500"></i></button>

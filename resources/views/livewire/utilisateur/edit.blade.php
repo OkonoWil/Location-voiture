@@ -138,8 +138,26 @@
             </div>
             <div class="leading-loose mt-10 w-full">
                 <form class="p-6 sm:p-4 md:p-10 bg-white rounded shadow-xl" role="form"
-                    wire:submit.prevent='updatePhoto()'>
+                    wire:submit.prevent='updatePicture()'>
                     <p class="text-lg text-gray-800 font-medium pb-2">Changer la photo de profil</p>
+
+                    <div class="flex w-full flex-col md:flex-row">
+                        <div class="mt-2 w-full md:w-1/2 sm:mr-1">
+                            <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="photo">Photo</label>
+                            <input
+                                class="w-full px-2 sm:px-5  py-1 sm:py-2 text-gray-700 bg-gray-200 @error('photo') border border-red-500 @enderror rounded focus:outline-blue-500"
+                                id="photo" wire:model="photo" type="file" placeholder="Photo" aria-label="photo">
+                            @error('photo')
+                            <span class="text-red-500">{{$message}}</span>
+                            @enderror
+                        </div>
+
+                        <div class="mt-2 w-full flex justify-center md:w-1/2 sm:ml-1">
+                            <button class="px-4 font-extralight py-1 text-white  tracking-wider bg-green-800 rounded"
+                                type="submit">Enregistrer</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>

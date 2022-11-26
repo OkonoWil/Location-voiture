@@ -1,4 +1,5 @@
 <div class="bg-white overflow-auto">
+    @dd(Storage::Auth->user()->photo)
     <div class="flex flex-wrap flex-row justify-between my-1">
         <button wire:click='goToAddUser'
             class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">
@@ -77,10 +78,13 @@
                     {{$user->created_at===null?'':$user->created_at->diffForHumans()}}
                 </td>
                 <td class="text-center py-3 px-4">
-                    <button wire:click="goToEditUser({{$user}})" class=" mx-2"><i
+                    <button title="show"
+                        wire:click="showPicture('{{$user->name." ".$user->lastName}}','{{$user->role->nomrole}}', '{{$user->photo}}', '{{$user->id}}')"
+                        class=" mx-2"><i class="fa-regular fa-image text-blue-500"></i></button>
+                    <button title="edit" wire:click="goToEditUser({{$user}})" class=" mx-2"><i
                             class="fa-solid fa-pen-to-square text-green-500"></i></button>
-                    <button wire:click="confirmDestroy('{{$user->name}}','{{$user->id}}')" class=" mx-2"><i
-                            class="fa-solid fa-trash text-red-500"></i></button>
+                    <button title="delete" wire:click="confirmDestroy('{{$user->name}}','{{$user->id}}')"
+                        class=" mx-2"><i class="fa-solid fa-trash text-red-500"></i></button>
                 </td>
             </tr>
             @php $i++ @endphp

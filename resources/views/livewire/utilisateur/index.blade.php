@@ -1,20 +1,20 @@
 <div>
 
-    @if ($isBtnCreateClicked)
-    @include('livewire.utilisateur.create')
-    @endif
+  @if ($isBtnCreateClicked)
+  @include('livewire.utilisateur.create')
+  @endif
 
-    @if($isBtnEditClicked)
-    @include('livewire.utilisateur.edit')
-    @endif
+  @if($isBtnEditClicked)
+  @include('livewire.utilisateur.edit')
+  @endif
 
-    @if ($isBtnListClicked)
-    @include('livewire.utilisateur.list')
-    @endif
+  @if ($isBtnListClicked)
+  @include('livewire.utilisateur.list')
+  @endif
 
 </div>
 <script>
-    window.addEventListener("showSuccessMessage", event=>{    
+  window.addEventListener("showSuccessMessage", event=>{    
         console.log(event)
         Swal.fire({
             position: 'center',
@@ -42,5 +42,16 @@
             }
           })
 
+    })
+    window.addEventListener("showPictureMessage", event=>{  
+        console.log(event)
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            imageUrl: event.detail.imageUrl,
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: event.detail.imageAlt,
+        })
     })
 </script>

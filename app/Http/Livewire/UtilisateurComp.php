@@ -55,11 +55,11 @@ class UtilisateurComp extends Component
         return [
             'name' => 'required',
             'lastName' => 'required',
-            'email' => ['required', 'email', Rule::unique("users", "email")->ignore($this->user_id)],
-            'username' => ['required', Rule::unique("users", "username")->ignore($this->user_id)],
+            'email' => ['required', 'email', Rule::unique("users")->ignore($this->user_id)],
+            'username' => ['required', Rule::unique("users")->ignore($this->user_id)],
             'role_id' => 'required',
             'sexe' => 'required',
-            'phone1' => ['required', 'min_digits:8', Rule::unique("users", "phone1")->ignore($this->user_id)],
+            'phone1' => ['required', 'min_digits:8', Rule::unique("users")->ignore($this->user_id)],
             'phone2' => 'nullable|numeric|min_digits:8',
             'salaire' => 'required|numeric|min_digits:5',
         ];
@@ -100,7 +100,7 @@ class UtilisateurComp extends Component
     public function goToEditUser($user)
     {
 
-        $this->id = $user['id'];
+        $this->user_id = $user['id'];
         $this->name = $user['name'];
         $this->lastName = $user["lastName"];
         $this->email = $user["email"];
@@ -173,8 +173,18 @@ class UtilisateurComp extends Component
     public function updateUser()
     {
         $validatedData = $this->validate();
-        $this->current_user->updated_at = now();
-        $this->current_user->save();
+        $user = User::find($this->user_id);
+        $user->name = $validatedData['name'];
+        $user->lastName = $validatedData['lastName'];
+        $user->email = $validatedData['email'];
+        $user->username = $validatedData['username'];
+        $user->role_id = $validatedData['role_id'];
+        $user->sexe = $validatedData['sexe'];
+        $user->phone1 = $validatedData['phone1'];
+        $user->phone2 = $validatedData['phone2'];
+        $user->salaire = $validatedData['salaire'];
+        $user->updated_at = now();
+        $user->save();
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Les informations de l'tilisateur ont été mise à jour avec succès!"]);
     }
 
@@ -198,5 +208,15 @@ class UtilisateurComp extends Component
         $user->visible = 0;
         $user->save();
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Utilisateur supprimé avec succès!"]);
+    }
+
+    public function showPicture($name, $role, $photo, $id)
+    {
+        $this->dispatchBrowserEvent("showPictureMessage", [
+            "title" => $name,
+            "text" => $role,
+            "imageAlt" => "photo id" . $id,
+            "imageUrl" => $photo,
+        ]);
     }
 }

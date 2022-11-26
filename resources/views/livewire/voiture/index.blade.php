@@ -1,6 +1,4 @@
 <div>
-    <button></button>
-
     <div class="bg-white overflow-auto">
         <div class="flex flex-wrap flex-row justify-between my-1">
             <button class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">

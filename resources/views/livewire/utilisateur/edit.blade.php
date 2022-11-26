@@ -125,12 +125,16 @@
                 </div>
             </form>
         </div>
-        <div class=" 2xl:w-1/3 2xl:px-10 w-full">
+        <div class=" 2xl:w-1/3 2xl:px-10 w-full lg:w-4/5">
             <div class="leading-loose mt-10 2xl:mt-0 w-full">
-                <form class="p-6 sm:p-4 md:p-10 bg-white rounded shadow-xl" role="form"
+                <div class="p-6 sm:p-4 md:p-10 bg-white rounded shadow-xl" role="form"
                     wire:submit.prevent='restePassword()'>
                     <p class="text-lg text-gray-800 font-medium pb-2">Authentification</p>
-                </form>
+                    <p><span wire:click='resetPassword()' class="text-blue-500 cursor-pointer">Réinitialiser le mot de
+                            passe</span><span> par
+                            [défaut:
+                            "<strong>password</strong>"]</span></p>
+                </div>
             </div>
             <div class="leading-loose mt-10 w-full">
                 <form class="p-6 sm:p-4 md:p-10 bg-white rounded shadow-xl" role="form"

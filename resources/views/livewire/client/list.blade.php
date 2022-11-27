@@ -1,9 +1,8 @@
 <div>
-    <button></button>
-
     <div class="bg-white overflow-auto">
         <div class="flex flex-wrap flex-row justify-between my-1">
-            <button class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">
+            <button wire:click='goToAddClient()'
+                class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">
                 <i class="fa-solid fa-plus mr-2"></i>
                 Ajouter
             </button>
@@ -56,8 +55,8 @@
                         <div class="flex items-center text-sm">
                             <!-- Avatar with inset shadow -->
                             <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                <img class="object-cover w-full h-full rounded-full" src="{{$client->photo}}" alt=""
-                                    loading="lazy" />
+                                <img class="object-cover w-full h-full rounded-full"
+                                    src="{{Storage::url($client->photo)}}" alt="" loading="lazy" />
                                 <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                             </div>
                             <div>
@@ -75,7 +74,8 @@
                         {{$client->numeroPieceIdentite}}
                     </td>
                     <td class="px-4 py-3 text-sm text-center">
-                        {{$client->phone1}}
+                        <a class=" cursor-pointer" title="appelez"
+                            href="tel:{{$client->phone1}}">{{$client->phone1}}</a>
                     </td>
                     <td class="text-center py-3 px-4"><button title="show"
                             wire:click="showPicture('{{$client->name." ".$client->lastName}}','{{'Enregistré par: '.$client->user->name}}', '{{Storage::url($client->photo)}}', '{{$client->id}}')"

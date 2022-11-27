@@ -185,7 +185,7 @@
                 <button class="px-4 font-extralight py-1 text-white  tracking-wider bg-green-800 rounded"
                     type="submit">Enregistrer</button>
                 <button class="px-4 font-extralight py-1 text-white  tracking-wider bg-blue-800 rounded" type="button"
-                    wire:click='goToListUser()'><span class="md:hidden">Retour</span><span
+                    wire:click='goToListClient()'><span class="md:hidden">Retour</span><span
                         class="hidden md:inline">Retouner
                         à la liste des
                         clients</span></button>

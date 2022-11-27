@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{env('APP_NAME')}}-@yield('tilte')</title>
+    <title>@yield('tilte') | {{env('APP_NAME')}}</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
     <link rel="shortcut icon" href="{{Storage::url('icon/icons8_sausage_barbeque.ico')}}" type="image/x-icon">
@@ -145,7 +145,8 @@
 
             <footer class="w-full bg-white text-center p-4">
                 <div>
-                    <p>&copy; Copyright {{date('Y')}}. Okono Wilfried, développeur full stack</p>
+                    <p>&copy; Copyright {{date('Y')}}. Groupe de TPE de génie logiciel.</p>
+                    <p>Système de gestion de location de voitures commerciales</p>
                 </div>
                 <div>
                     <a class="m-2" href="https://www.linkedin.com/in/wilfried-lo%C3%AFc-okono-mehitang-11a380218/)"><i

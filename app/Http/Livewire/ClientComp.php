@@ -6,8 +6,9 @@ use App\Models\User;
 use App\Models\Client;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class ClientComp extends Component
 {
@@ -71,9 +72,9 @@ class ClientComp extends Component
             'pays' => 'required',
             'Adresse' => 'required',
             'sexe' => 'required',
-            'phone1' => ['required', 'phone1', Rule::unique("clients")->ignore($this->client_id)],
+            'phone1' => ['required', Rule::unique("clients")->ignore($this->client_id)],
             'pieceIdentite' => 'required',
-            'numeroPieceIdentite' => ['required', 'numeroPieceIdentite', Rule::unique("clients")->ignore($this->client_id)],
+            'numeroPieceIdentite' => ['required', Rule::unique("clients")->ignore($this->client_id)],
             'phone2' => 'nullable|numeric|min_digits:8',
         ];
     }
@@ -98,36 +99,36 @@ class ClientComp extends Component
 
 
     //Navigation entre les vues
-    function goToAddUser()
+    function goToAddClient()
     {
         $this->isBtnListClicked = false;
         $this->isBtnCreateClicked = true;
         $this->isBtnEditClicked = false;
     }
-    public function goToListUser()
+    public function goToListClient()
     {
+
         $this->isBtnListClicked = true;
         $this->isBtnCreateClicked = false;
         $this->isBtnEditClicked = false;
     }
-    public function goToEditUser($client)
+    public function goToEditClient($client)
     {
-
-        $client->client_id = $client['id'];
-        $client->name = $client['name'];
-        $client->lastName = $client['lastName'];
-        $client->dateDeNaissance = $client['dateDeNaissance'];
-        $client->lieuDeNaissance = $client['lieuDeNaissance'];
-        $client->nationalite = $client['nationalite'];
-        $client->ville = $client['ville'];
-        $client->pays = $client['pays'];
-        $client->Adresse = $client['Adresse'];
-        $client->sexe = $client['sexe'];
-        $client->email = $client['email'];
-        $client->phone1 = $client['phone1'];
-        $client->pieceIdentite = $client['pieceIdentite'];
-        $client->numeroPieceIdentite = $client['numeroPieceIdentite'];
-        $client->phone2 = $client['phone2'];
+        $this->client_id = $client['id'];
+        $this->name = $client['name'];
+        $this->lastName = $client['lastName'];
+        $this->dateDeNaissance = $client['dateDeNaissance'];
+        $this->lieuDeNaissance = $client['lieuDeNaissance'];
+        $this->nationalite = $client['nationalite'];
+        $this->ville = $client['ville'];
+        $this->pays = $client['pays'];
+        $this->Adresse = $client['Adresse'];
+        $this->sexe = $client['sexe'];
+        $this->email = $client['email'];
+        $this->phone1 = $client['phone1'];
+        $this->pieceIdentite = $client['pieceIdentite'];
+        $this->numeroPieceIdentite = $client['numeroPieceIdentite'];
+        $this->phone2 = $client['phone2'];
         $this->current_user = $client;
 
         $this->isBtnListClicked = false;
@@ -168,7 +169,6 @@ class ClientComp extends Component
     public function addClient()
     {
         $validatedData = $this->validate();
-        dd('44');
         $filename = 'client' . Client::latest()->first()->id + 1 . '.' . $validatedData['photo']->extension();
         $path = $validatedData['photo']->storeAs(
             'clients',
@@ -176,15 +176,33 @@ class ClientComp extends Component
             'public'
         );
         $validatedData['photo'] = $path;
+        $validatedData['user_id'] = Auth::user()->id;
         Client::create(
             $validatedData
         );
 
-        $this->corbeille();
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Client créé avec succès!"]);
     }
 
-
+    public function corbeille()
+    {
+        $this->client_id = '';
+        $this->name = '';
+        $this->lastName = '';
+        $this->dateDeNaissance = '';
+        $this->lieuDeNaissance = '';
+        $this->nationalite = '';
+        $this->ville = '';
+        $this->pays = '';
+        $this->Adresse = '';
+        $this->sexe = '';
+        $this->email = '';
+        $this->phone1 = '';
+        $this->photo = '';
+        $this->pieceIdentite = '';
+        $this->numeroPieceIdentite = '';
+        $this->phone2 = '';
+    }
     public function updateClient()
     {
         $validatedData = $this->validate();
@@ -228,7 +246,7 @@ class ClientComp extends Component
         $client->visible = 0;
         $client->updated_at = now();
         $client->save();
-        $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Client supprimé avec succès!"]);
+        $this->dispatchBrowserEvent("showSuccessDesMessage", ["Message" => "Client supprimé avec succès!"]);
     }
 
     public function showPicture($name, $user, $photo, $id)
@@ -249,7 +267,7 @@ class ClientComp extends Component
             $filename,
             'public'
         );
-        $client = Client::find($this->user_id);
+        $client = Client::find($this->client_id);
         $client->photo = $path;
         $client->updated_at = now();
         $client->save();

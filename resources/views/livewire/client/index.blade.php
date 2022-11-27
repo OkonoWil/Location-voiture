@@ -9,14 +9,33 @@
     @endif
 
     @if ($isBtnListClicked)
-    @include('livewire.client.index')
+    @include('livewire.client.list')
     @endif
 
 </div>
 <script>
+    window.addEventListener("showSuccessDesMessage", event=>{ 
+        const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+        })
+            Toast.fire({
+                icon: 'success',
+                title: event.detail.Message || "Opération effectuée avec succès!",
+            })      
+  
+    })
+
     window.addEventListener("showSuccessMessage", event=>{ 
           Swal.fire({
-              position: 'center',
+              position: 'top-end',
               icon: 'success',
               title: event.detail.Message || "Opération effectuée avec succès!",
               showConfirmButton: false,

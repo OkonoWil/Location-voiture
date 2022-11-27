@@ -16,7 +16,7 @@
 <script>
   window.addEventListener("showSuccessMessage", event=>{ 
         Swal.fire({
-            position: 'center',
+            position: 'top-end',
             icon: 'success',
             title: event.detail.Message || "Opération effectuée avec succès!",
             showConfirmButton: false,

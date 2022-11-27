@@ -78,7 +78,7 @@
                             href="tel:{{$client->phone1}}">{{$client->phone1}}</a>
                     </td>
                     <td class="text-center py-3 px-4"><button title="show"
-                            wire:click="showPicture('{{$client->name." ".$client->lastName}}','{{'Enregistré par: '.$client->user->name}}', '{{Storage::url($client->photo)}}', '{{$client->id}}')"
+                            wire:click="showPicture('{{$location->}}','{{'Enregistré par: '.$location->name." ".$location->lastName}}', '{{Storage::url($client->photo)}}', '{{$client->id}}')"
                             class=" mx-2"><i class="fa-regular fa-image text-blue-500"></i></button>
                         <button title="edit" wire:click="goToEditClient({{$client}})" class=" mx-2"><i
                                 class="fa-solid fa-pen-to-square text-green-500"></i></button>

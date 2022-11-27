@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('immatriculation')->unique();
             $table->bigInteger('numeroSerie')->unique();
             $table->string('couleur');
+            $table->string('photo');
             $table->date('dateDeFabri');
             $table->unsignedInteger('nombrePlace');
             $table->double('tarifParJour');

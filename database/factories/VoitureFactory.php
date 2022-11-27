@@ -23,6 +23,7 @@ class VoitureFactory extends Factory
             'immatriculation' => $this->faker->unique()->regexify('LT[0-9]{4}[A-Z]{2}'),
             'numeroSerie' => $this->faker->unique()->randomNumber($nbDigits = 7),
             'couleur' => $this->faker->safeColorName,
+            "photo" => $this->faker->regexify('profils/pp0[01][0-9][.]jpg'),
             'dateDeFabri' => $this->faker->dateTimeBetween('-1000 week', '-600 week'),
             'nombrePlace' => $this->faker->randomElement($array = [2, 3, 4, 5, 6,]),
             'tarifParJour' => $this->faker->randomElement([30000, 40000, 45000, 50000, 70000, 100000]),

@@ -60,12 +60,13 @@
                     <td class="text-center py-3 px-4">{{$location->montant}}FCFA</td>
                     <td class="text-center py-3 px-4">{{$location->caution}}FCFA</td>
                     <td class="text-center py-3 px-4">{{$location->dateFin}}</td>
-                    <td class="text-center py-3 px-4"><button title="show" class=" mx-2"><i
-                                class="fa-regular fa-image text-blue-500"></i></button>
-                        <button title="edit" wire:click="goToEditLoction({{$location}})" class=" mx-2"><i
+                    <td class="text-center py-3 px-4"><button title="show"
+                            wire:click="showPicture('{{$location->immatriculation}}','{{' loué par : '.$location->name.' Enregistré par: '.$location->user->name}}', '{{Storage::url($location->photo)}}', '{{$location->id}}')"
+                            class=" mx-2"><i class="fa-regular fa-image text-blue-500"></i></button>
+                        <button title="edit" wire:click="goToEditClient({{$location}})" class=" mx-2"><i
                                 class="fa-solid fa-pen-to-square text-green-500"></i></button>
-                        <button title="delete" wire:click="confirmDestroy('{{$location->id}}','{{$location->name}}')"
-                            class=" mx-2"><i class="fa-solid fa-trash text-red-500"></i></button>>
+                        <button title="delete" wire:click="confirmDestroy('{{$location->name}}','{{$location->id}}')"
+                            class=" mx-2"><i class="fa-solid fa-trash text-red-500"></i></button>
                     </td>
                 </tr>
                 @php $i++ @endphp

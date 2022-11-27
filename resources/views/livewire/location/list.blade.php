@@ -24,7 +24,7 @@
             <div class="flex-row items-center hidden sm:flex">
                 <span>locations </span>
                 @php
-                $n =$clients->total()<100?$clients->total():100
+                $n =$locations->total()<100?$locations->total():100
                     @endphp
                     <select wire:model.lazy="parPage" name="maxShow" id="maxShow" class='font-bold mx-1 border-2'>
                         @for($i= 10; $i <= $n ; $i+=10) <option value="{{$i}}">
@@ -55,14 +55,18 @@
                 @forelse ( $locations as $location )
                 <tr @if($i%2!=0)class="bg-gray-200" @endif>
                     <td class="text-center py-3 px-4">{{$location->id}}</td>
-                    <td class="text-center py-3 px-4">{{$location->client->name}}</td>
+                    <td class="text-center py-3 px-4">{{$location->name. " ".$location->lastName}}</td>
                     <td class="text-center py-3 px-4">{{$location->voiture->immatriculation}}</td>
                     <td class="text-center py-3 px-4">{{$location->montant}}FCFA</td>
                     <td class="text-center py-3 px-4">{{$location->caution}}FCFA</td>
                     <td class="text-center py-3 px-4">{{$location->dateFin}}</td>
-                    <td class="text-center py-3 px-4"><a href="#" class=" mx-2"><i
-                                class="fa-solid fa-pen-to-square text-green-500"></i></a><a href="#" class=" mx-2"><i
-                                class="fa-solid fa-trash text-red-500"></i></a></td>
+                    <td class="text-center py-3 px-4"><button title="show" class=" mx-2"><i
+                                class="fa-regular fa-image text-blue-500"></i></button>
+                        <button title="edit" wire:click="goToEditLoction({{$location}})" class=" mx-2"><i
+                                class="fa-solid fa-pen-to-square text-green-500"></i></button>
+                        <button title="delete" wire:click="confirmDestroy('{{$location->id}}','{{$location->name}}')"
+                            class=" mx-2"><i class="fa-solid fa-trash text-red-500"></i></button>>
+                    </td>
                 </tr>
                 @php $i++ @endphp
                 @empty<tr>

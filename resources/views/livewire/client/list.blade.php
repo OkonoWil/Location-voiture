@@ -80,7 +80,7 @@
                     <td class="text-center py-3 px-4"><button title="show"
                             wire:click="showPicture('{{$client->name." ".$client->lastName}}','{{'Enregistré par: '.$client->user->name}}', '{{Storage::url($client->photo)}}', '{{$client->id}}')"
                             class=" mx-2"><i class="fa-regular fa-image text-blue-500"></i></button>
-                        <button title="edit" wire:click="goToEditUser({{$client}})" class=" mx-2"><i
+                        <button title="edit" wire:click="goToEditClient({{$client}})" class=" mx-2"><i
                                 class="fa-solid fa-pen-to-square text-green-500"></i></button>
                         <button title="delete" wire:click="confirmDestroy('{{$client->name}}','{{$client->id}}')"
                             class=" mx-2"><i class="fa-solid fa-trash text-red-500"></i></button>

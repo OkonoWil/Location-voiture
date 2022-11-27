@@ -33,9 +33,9 @@ class LocationComp extends Component
             ])->orWhere([
                 ['lastName', 'like', '%' . $this->search . '%'],
                 ['locations.visible', '=', 1],
-            ])->join('clients', 'clients.id', '=', 'locations.user_id')
+            ])->join('clients', 'clients.id', '=', 'locations.client_id')
                 ->join('voitures', 'voitures.id', '=', 'locations.voiture_id')
-                ->select('locations.*', 'voitures.immatriculation', 'clients.name', 'clients.lastName')->paginate($this->parPage)
+                ->select('locations.*', 'voitures.immatriculation', 'clients.name', 'clients.lastName')->orderBy('id')->paginate($this->parPage)
         ])
             ->extends('employe.layouts.location')
             ->section('contenu');

@@ -11,6 +11,16 @@ class VoitureComp extends Component
     use WithPagination;
     public $parPage = 10;
     public $search;
+    public $voiture_id;
+    public $modele;
+    public $immatriculation;
+    public $numeroSerie;
+    public $couleur;
+    public $photo;
+    public $dateDeFabri;
+    public $nombrePlace;
+    public $tarifParJour;
+    public $disponible;
     public function updatingParPage()
     {
         $this->resetPage();

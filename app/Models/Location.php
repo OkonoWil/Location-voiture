@@ -34,4 +34,8 @@ class Location extends Model
     {
         return $this->hasOne(Paiement::class);
     }
+    public function retour()
+    {
+        return $this->hasOne(Retour::class);
+    }
 }

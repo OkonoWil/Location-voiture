@@ -46,7 +46,7 @@
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Immatriculation</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">montant</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">caution</th>
-                    <th class="text-center py-3 px-7 uppercase font-semibold text-sm">date</th>
+                    <th class="text-center py-3 px-7 uppercase font-semibold text-sm">date de fin</th>
                     <th class="text-center py-3 px-6 uppercase font-semibold text-sm">Action</th>
                 </tr>
             </thead>
@@ -63,7 +63,7 @@
                     <td class="text-center py-3 px-4"><button title="show"
                             wire:click="showPicture('{{$location->immatriculation}}','{{' loué par : '.$location->name.' Enregistré par: '.$location->user->name}}', '{{Storage::url($location->photo)}}', '{{$location->id}}')"
                             class=" mx-2"><i class="fa-regular fa-image text-blue-500"></i></button>
-                        <button title="edit" wire:click="goToEditClient({{$location}})" class=" mx-2"><i
+                        <button title="edit" wire:click="goToEditLocation({{$location}})" class=" mx-2"><i
                                 class="fa-solid fa-pen-to-square text-green-500"></i></button>
                         <button title="delete" wire:click="confirmDestroy('{{$location->name}}','{{$location->id}}')"
                             class=" mx-2"><i class="fa-solid fa-trash text-red-500"></i></button>

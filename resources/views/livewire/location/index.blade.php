@@ -55,7 +55,7 @@
               cancelButtonText: 'Annuler'
             }).then((result) => {
               if (result.isConfirmed) {
-                @this.deleteUser(event.detail.data.user_id)
+                @this.deleteLocation(event.detail.data.user_id)
               }
             })
   

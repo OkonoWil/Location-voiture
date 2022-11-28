@@ -219,7 +219,7 @@ class LocationComp extends Component
             ]
         );
     }
-    public function deleteUser($location_id)
+    public function deleteLocation($location_id)
     {
         $location = Location::find($location_id);
         $location->visible = 0;

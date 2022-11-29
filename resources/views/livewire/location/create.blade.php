@@ -54,12 +54,14 @@
                 <div class="w-full md:w-1/2 sm:mr-1 mt-2">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="ville">Voiture</label>
                     <select wire:model="voiture_id" id="voiture_id" class='w-full font-bold mx-1 border-2'>
-                        @foreach ($voitures as $voiture)
+                        <option value="null">selectionner une voiture</option>
+                        @forelse ($voitures as $voiture)
                         <option class="w-10 h-14" value="{{$voiture->id}}">
                             {{$voiture->immatriculation.' - '.$voiture->marque->nomMarque.' - '.$voiture->modele}}
                         </option>
-
-                        @endforeach
+                        @empty
+                        <option value="null">Aucune voitures disponible</option>
+                        @endforelse
                     </select>
                     @error('voiture_id')
                     <span class="text-red-500">{{$message}}</span>
@@ -68,12 +70,14 @@
                 <div class="w-full md:w-1/2 sm:mr-1 mt-2">
                     <label class="hidden sm:block sm:text-base text-sm text-gray-600" for="ville">Client</label>
                     <select wire:model="client_id" id="client_id" class='w-full font-bold mx-1 border-2'>
-                        @foreach ($clients as $client)
+                        <option value="null">Selectionner un client</option>
+                        @forelse ($clients as $client)
                         <option class="w-10 h-14" value="{{$client->id}}">
                             {{$client->name.' '.$client->lastName}}
                         </option>
-
-                        @endforeach
+                        @empty
+                        <option value="null">Aucun client</option>
+                        @endforelse
                     </select>
                     @error('client_id')
                     <span class="text-red-500">{{$message}}</span>

@@ -9,6 +9,9 @@ use Livewire\WithPagination;
 class VoitureComp extends Component
 {
     use WithPagination;
+    public $isBtnListClicked = true;
+    public $isBtnCreateClicked = false;
+    public $isBtnEditClicked = false;
     public $parPage = 10;
     public $search;
     public $voiture_id;

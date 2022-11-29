@@ -54,5 +54,9 @@ class DatabaseSeeder extends Seeder
         Location::factory(1000)->create();
         Paiement::factory(1000)->create();
         Retour::factory(1000)->create();
+        Location::factory(100)->create();
+        Paiement::factory(100)->create();
+        Retour::factory(100)->create();
+        Retour::factory(1)->create();
     }
 }

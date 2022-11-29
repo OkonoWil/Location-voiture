@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'phone1' => 653490998,
                 'salaire' => 500000,
                 'sexe' => 'Homme',
-                'photo' => 'profils/pp001.jpg',
+                'photo' => 'profils/pp1_n.jpg',
                 'email_verified_at' => now(),
                 'password' => Hash::make('1234'),
                 'role_id' => 1,

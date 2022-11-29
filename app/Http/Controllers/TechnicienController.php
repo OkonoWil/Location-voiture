@@ -15,6 +15,11 @@ class TechnicienController extends Controller
         $technicien = User::where('role_id', 3)->get();
         $etats = Etat::all();
         //$recettes2 = Location::where('validation', 1)->latest()->take(5)->get(['id', 'name', 'image', 'duree', 'vue', 'user_id']);
-        return view('technicien.index', ['etats' => $etats, 'notDisponible' => $notDisponible, 'disponible' => $disponible, 'techniciens' => $technicien]);
+        return view('technicien.index', [
+            'etats' => $etats,
+            'notDisponible' => $notDisponible,
+            'disponible' => $disponible,
+            'techniciens' => $technicien
+        ]);
     }
 }

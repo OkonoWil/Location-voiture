@@ -56,7 +56,7 @@
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="px-6 pt-6 pb-3">
             <a href="{{route('welcome')}}"
-                class="text-white text-3xl font-semibold uppercase hover:text-gray-300">LARACAR</a>
+                class="text-white text-3xl font-semibold uppercase hover:text-gray-300">TAC-Auto</a>
             <span class=" w-full  text-white font-extrabold flex items-center justify-center pt-4 pb-0">
                 {{Auth::user()->username}} <span
                     class="bg-green-700 ml-2 border rounded-md border-green-600 p-1">{{Auth::user()->role->nomrole}}</span>

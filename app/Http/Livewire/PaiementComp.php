@@ -28,7 +28,6 @@ class PaiementComp extends Component
     {
         return [
             'location_id' => 'required',
-            'user_id' => 'required',
         ];
     }
 
@@ -54,6 +53,7 @@ class PaiementComp extends Component
     //Navigation entre les vues
     function goToAddPaiement()
     {
+        $this->user_id = Auth::user()->id;
         $this->isBtnListClicked = false;
         $this->isBtnCreateClicked = true;
         $this->isBtnEditClicked = false;
@@ -66,18 +66,18 @@ class PaiementComp extends Component
         $this->isBtnEditClicked = false;
         $this->corbeille();
     }
-    public function goToEditPaiement($paiement)
-    {
-        $this->paiement_id = $paiement['id'];
-        $this->datePaiement = $paiement['datePaiement'];
-        $this->montant = $paiement['montant'];
-        $this->user_id = $paiement['user_id'];
-        $this->location_id = $paiement['location_id'];
+    // public function goToEditPaiement($paiement)
+    // {
+    //     $this->paiement_id = $paiement['id'];
+    //     $this->datePaiement = $paiement['datePaiement'];
+    //     $this->montant = $paiement['montant'];
+    //     $this->user_id = $paiement['user_id'];
+    //     $this->location_id = $paiement['location_id'];
 
-        $this->isBtnListClicked = false;
-        $this->isBtnCreateClicked = false;
-        $this->isBtnEditClicked = true;
-    }
+    //     $this->isBtnListClicked = false;
+    //     $this->isBtnCreateClicked = false;
+    //     $this->isBtnEditClicked = true;
+    // }
     public function corbeille()
     {
         $this->paiement_id = '';
@@ -89,9 +89,9 @@ class PaiementComp extends Component
 
     public function render()
     {
-
+        // dd(Location::leftJoin('paiements', 'locations.id', '=', 'paiements.location_id')->select('locations.*', 'paiements.montant as montantP', 'paiements.datePaiement')->whereNull('paiements.montant')->get());
         return view('livewire.paiement.index', [
-            'paiements' => Paiement::where('visible', 1)->paginate($this->parPage),
+            'paiements' => Paiement::where('visible', 1)->orderByDesc('paiements.id')->paginate($this->parPage),
             'locations' => Location::leftJoin('paiements', 'locations.id', '=', 'paiements.location_id')->select('locations.*', 'paiements.montant as montantP', 'paiements.datePaiement')->whereNull('paiements.montant')->get()
         ])->extends('employe.layouts.paiement')->section('contenu');
     }
@@ -112,10 +112,10 @@ class PaiementComp extends Component
     {
         $validatedData = $this->validate();
         // dd([$validatedData['dateDebut'], $validatedData['dateFin'], date_diff(date_create($validatedData['dateDebut']), date_create($validatedData['dateFin']))]);
-
-        $validatedData['montant'] = Location::find($validatedData['voiture_id'])->montant + Location::find($validatedData['voiture_id'])->cautiont;
+        //dd([Location::find($validatedData['location_id'])->montant + Location::find($validatedData['location_id'])->caution, Location::find($validatedData['location_id'])->montant, Location::find($validatedData['location_id'])->caution]);
+        $validatedData['montant'] = Location::find($validatedData['location_id'])->montant + Location::find($validatedData['location_id'])->caution;
         $validatedData['user_id'] = Auth::user()->id;
-        $validatedData['datePaiement'] = now();
+        $validatedData['datePaiement'] = now()->format('Y-m-d H:i:s');
         $this->montant = $validatedData['montant'];
         $this->user_id = $validatedData['user_id'];
         $this->datePaiement = $validatedData['datePaiement'];
@@ -177,6 +177,6 @@ class PaiementComp extends Component
         $paiement->visible = 0;
         $paiement->updated_at = now();
         $paiement->save();
-        $this->dispatchBrowserEvent("showSuccessDesMessage", ["Message" => "Location supprimé avec succès!"]);
+        $this->dispatchBrowserEvent("showSuccessDesMessage", ["Message" => "Paiement supprimé avec succès!"]);
     }
 }

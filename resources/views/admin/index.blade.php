@@ -5,22 +5,22 @@
     <h1 class="text-3xl font-extrabold text-blue-600 pb-6">Tableau de Bord</h1>
 
     <div class="flex flex-wrap mt-6">
-        <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
-            <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-plus mr-3"></i> Monthly Reports
+        <div class="w-full lg:w-2/3 pr-0 lg:pr-2">
+            <p class=" pb-3 flex items-center">
+                <i class="fas fa-plus mr-3"></i> Recette par marque
             </p>
             <div class="p-6 bg-white">
-                <canvas id="chartOne" width="400" height="200"></canvas>
+                <canvas id="chartOne" width="200" height="100"></canvas>
             </div>
         </div>
-        <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+        {{-- <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
             <p class="text-xl pb-3 flex items-center">
                 <i class="fas fa-check mr-3"></i> Resolved Reports
             </p>
             <div class="p-6 bg-white">
                 <canvas id="chartTwo" width="400" height="200"></canvas>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="flex flex-wrap">
@@ -113,15 +113,35 @@
     @endsection
 
     @section('data')
+    <form action="" id="marqform" class="hidden">
+        @foreach ($marques as $marque)
+        <input type="text" name="marque[]" value="{{$marque->marq}}">
+        @endforeach
+    </form>
+    <form action="" id="retform" class="hidden">
+        @foreach ($marques as $marque)
+        <input type="text" name="recette[]" value="{{$marque->sum}}">
+        @endforeach
+    </form>
     <script>
+        const marques = document.getElementsByName('marque[]');
+        let tabMarque = new Array();
+        marques.forEach(element => {
+            tabMarque.push(element.value);   
+        });
+        const recettes = document.getElementsByName('recette[]');
+        let tabRecette = new Array();
+        recettes.forEach(element => {
+            tabRecette.push(element.value);   
+        });
         var chartOne = document.getElementById('chartOne');
         var myChart = new Chart(chartOne, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: tabMarque,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# of Recette',
+                    data: tabRecette,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

@@ -13,7 +13,7 @@
         }
     </style>
     @vite('resources/css/app.css')
-    <title>{{env('APP_NAME')}}|login</title>
+    <title>login | {{env('APP_NAME')}}</title>
 </head>
 
 <body class="bg-white font-family-karla h-screen">
@@ -24,7 +24,7 @@
         <div class="w-full md:w-1/2 flex flex-col">
 
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-                <p class="text-center text-3xl font-extrabold text-blue-700"><a href="{{route('welcome')}}">LARACAR
+                <p class="text-center text-3xl font-extrabold text-blue-700"><a href="{{route('welcome')}}">TAC-Auto
                         v.1</a></p>
                 <form action="{{route('postlogin')}}" method="post" class="flex flex-col pt-3 md:pt-8">
                     @csrf

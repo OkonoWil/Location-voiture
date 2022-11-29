@@ -125,7 +125,7 @@ class LocationComp extends Component
                 ['locations.visible', '=', 1],
             ])->join('clients', 'clients.id', '=', 'locations.client_id')
                 ->join('voitures', 'voitures.id', '=', 'locations.voiture_id')
-                ->select('locations.*', 'voitures.immatriculation', 'voitures.photo', 'clients.name', 'clients.lastName')->orderBy('id')->paginate($this->parPage),
+                ->select('locations.*', 'voitures.immatriculation', 'voitures.photo', 'clients.name', 'clients.lastName')->orderByDesc('id')->paginate($this->parPage),
             "voitures" => Voiture::where('visible', 1)->get(),
             "clients" => Client::where('visible', 1)->get()
         ])
@@ -168,13 +168,14 @@ class LocationComp extends Component
     public function updateLocation()
     {
         $validatedData = $this->validate();
-        $voiture = Voiture::find($this->voiture_id);
+        $voiture = Location::find($this->location_id);
         if (date_create($validatedData['dateDebut']) >= now()  && date_create($validatedData['dateDebut']) < date_create($validatedData['dateFin'])) {
             $voiture->dateDebut = $validatedData['dateDebut'];
             $voiture->dateFin = $validatedData['dateFin'];
             $voiture->montant =  $validatedData['montant'];
             $voiture->caution = $validatedData['caution'];
             $voiture->client_id = $validatedData['client_id'];
+            $voiture->voiture_id = $validatedData['voiture_id'];
             $voiture->user_id = Auth::user()->id;
             $voiture->updated_at = now();
             $voiture->save();
@@ -202,6 +203,9 @@ class LocationComp extends Component
         Location::create(
             $location
         );
+        $voiture = Voiture::find($location['voiture_id']);
+        $voiture->disponible = 0;
+        $voiture->save();
 
         $this->dispatchBrowserEvent("showSuccessMessage", ["Message" => "Location enregistré avec succès!"]);
     }

@@ -1,21 +1,21 @@
 <div>
 
-    @if ($isBtnCreateClicked)
-    @include('livewire.paiement.create')
-    @endif
+  @if ($isBtnCreateClicked)
+  @include('livewire.paiement.create')
+  @endif
 
-    @if($isBtnEditClicked)
-    @include('livewire.paiement.edit')
-    @endif
+  {{-- @if($isBtnEditClicked)
+  @include('livewire.paiement.edit')
+  @endif --}}
 
-    @if ($isBtnListClicked)
-    @include('livewire.paiement.list')
-    @endif
+  @if ($isBtnListClicked)
+  @include('livewire.paiement.list')
+  @endif
 
 
 </div>
 <script>
-    window.addEventListener("showSuccessDesMessage", event=>{ 
+  window.addEventListener("showSuccessDesMessage", event=>{ 
           const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',

@@ -7,22 +7,22 @@
     <h1 class="text-3xl font-extrabold text-blue-600 pb-6">Tableau de Bord</h1>
 
     <div class="flex flex-wrap mt-6">
-        <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
+        <div class="w-full lg:w-2/3 pr-0 lg:pr-2">
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-plus mr-3"></i> Rapport des retours
+                <i class="fas fa-plus mr-3"></i> Rapport des paiements
             </p>
             <div class="p-6 bg-white">
                 <canvas id="chartOne" width="400" height="200"></canvas>
             </div>
         </div>
-        <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+        {{-- <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
             <p class="text-xl pb-3 flex items-center">
                 <i class="fas fa-check mr-3"></i> Rapport de diagnostique
             </p>
             <div class="p-6 bg-white">
                 <canvas id="chartTwo" width="400" height="200"></canvas>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="flex flex-wrap">
@@ -192,17 +192,17 @@
     @endsection
 
     @section('data')
-    {{-- <form action="" id="techform" class="hidden">
-        @foreach ($techniciens as $technicien)
-        <input type="text" name="technicien[]" value="{{$technicien->name}}">
+    <form action="" id="techform" class="hidden">
+        @foreach ($employes as $employe)
+        <input type="text" name="employes[]" value="{{$employe->name}}">
         @endforeach
     </form>
     <form action="" id="retform" class="hidden">
-        @foreach ($techniciens as $technicien)
-        <input type="text" name="retours[]" value="{{$technicien->retours->count()}}">
+        @foreach ($employes as $employe)
+        <input type="text" name="paeiments[]" value="{{$employe->paiements->count()}}">
         @endforeach
     </form>
-    <form action="" id="etaform" class="hidden">
+    {{--<form action="" id="etaform" class="hidden">
         @foreach ($etats as $etat)
         <input type="text" name="etats[]" value="{{$etat->nomEtat}}">
         @endforeach
@@ -215,26 +215,26 @@
 
     </form> --}}
 
-    {{-- <script>
-        const techniciens = document.getElementsByName('technicien[]');
-        let tabTech = new Array();
-        techniciens.forEach(element => {
-            tabTech.push(element.value);   
+    <script>
+        const employes = document.getElementsByName('employes[]');
+        let tabEmp = new Array();
+        employes.forEach(element => {
+            tabEmp.push(element.value);   
         });
-        const retours = document.getElementsByName('retours[]');
-        let tabRetours = new Array();
-        retours.forEach(element => {
-            tabRetours.push(element.value);   
+        const paeiments = document.getElementsByName('paeiments[]');
+        let tabPaeiments = new Array();
+        paeiments.forEach(element => {
+            tabPaeiments.push(element.value);   
         });
         var chartOne = document.getElementById('chartOne');
         var myChart = new Chart(chartOne, {
             type: 'bar',
             data: {
                 
-                labels: tabTech,
+                labels: tabEmp,
                 datasets: [{
-                    label: '# of Retours',
-                    data: tabRetours,
+                    label: '# of Paiements enregistrés par employé',
+                    data: tabPaeiments,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -264,6 +264,8 @@
                 }
             }
         });
+    </script>
+    {{-- <script>
         const etats = document.getElementsByName('etats[]');
         let tabEtats = new Array();
         etats.forEach(element => {
@@ -312,5 +314,5 @@
                 }
             }
         }); 
-    </script>--}}
+    </script> --}}
     @endsection

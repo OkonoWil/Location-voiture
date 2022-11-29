@@ -1,70 +1,99 @@
 <div>
-    <button></button>
 
-    <div class="bg-white overflow-auto">
-        <div class="flex flex-row justify-between my-1">
-            <button class="flex items-center bg-green-500 text-white font-bold text-lg py-3 px-3 rounded-xl">
-                <i class="fa-solid fa-plus mr-2"></i>
-                Ajouter
-            </button>
+    @if ($isBtnCreateClicked)
+    @include('livewire.retour.create')
+    @endif
 
-            <div class=" flex flex-row items-center ">
-                <span>retours </span>
-                @php
-                $n =$retours->total()<100?$retours->total():100;
-                    @endphp
-                    <select wire:model.lazy="parPage" name="maxShow" id="maxShow" class='font-bold mx-1 border-2'>
-                        @for($i= 10; $i <= $n ; $i+=10) <option value="{{$i}}">
-                            {{$i}}
-                            </option>
-                            @endfor
-                    </select>
-                    <label for="maxShow">par page</label>
-            </div>
+    {{-- @if($isBtnEditClicked)
+    @include('livewire.paiement.edit')
+    @endif --}}
 
-        </div>
-    </div>
-    <div class="bg-white overflow-auto">
-        <table class="min-w-full bg-white">
-            <thead class="bg-blue-600 text-white">
-                <tr>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">#</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Client</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Immatriculation</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">état</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">montant retenu</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">date</th>
-                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-700">
-                @php $i = 0 @endphp
-                @forelse ( $retours as $retour )
-                <tr @if($i%2!=0)class="bg-gray-200" @endif>
-                    <td class="text-center py-3 px-4">{{$retour->id}}</td>
-                    <td class="text-center py-3 px-4">{{$retour->client->name}}</td>
-                    <td class="text-center py-3 px-4">{{$retour->location->voiture->immatriculation}}</td>
-                    <td class="text-center py-3 px-4">{{$retour->etat->nomEtat}}</td>
-                    <td class="text-center py-3 px-4">{{$retour->etat->montantDegat *
-                        $retour->location->caution}}FCFA
-                    </td>
-                    <td class="text-center py-3 px-4">{{$retour->dateRetour}}</td>
+    @if ($isBtnListClicked)
+    @include('livewire.retour.list')
+    @endif
 
-                    <td class="text-center py-3 px-4"><a href="#" class=" mx-2"><i
-                                class="fa-solid fa-pen-to-square text-green-500"></i></a><a href="#" class=" mx-2"><i
-                                class="fa-solid fa-trash text-red-500"></i></a></td>
-                </tr>
-                @php $i++ @endphp
-                @empty<tr>
-                    <td colspan="7" class="px-4 py-3 text-center">Aucun retour trouvé...</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
 
-    <div>
-        {{$retours->links()}}
-
-    </div>
 </div>
+<script>
+    window.addEventListener("showSuccessDesMessage", event=>{ 
+            const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+            })
+                Toast.fire({
+                    icon: 'success',
+                    title: event.detail.Message || "Opération effectuée avec succès!",
+                })      
+      
+        })
+    
+        window.addEventListener("showSuccessMessage", event=>{ 
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: event.detail.Message || "Opération effectuée avec succès!",
+                  showConfirmButton: false,
+                  timer: 3000
+              })
+      
+          })
+          window.addEventListener("showConfirmMessage", event=>{
+              Swal.fire({
+                  title: event.detail.title,
+                  text: event.detail.Message,
+                  icon: event.detail.icon,
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, supprimez-le!',
+                  cancelButtonText: 'Annuler'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    @this.deletePaiement(event.detail.data.user_id)
+                  }
+                })
+      
+          })
+          window.addEventListener("showConfirmCreateMessage", event=>{
+              Swal.fire({
+                  title: event.detail.title,
+                  text: event.detail.Message,
+                  icon: event.detail.icon,
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, créez-le!',
+                  cancelButtonText: 'Annuler'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    @this.createPaiement(event.detail.data.data)
+                  }
+                })
+      
+          })
+          window.addEventListener("showPictureMessage", event=>{  
+              Swal.fire({
+                  title: event.detail.title,
+                  text: event.detail.text,
+                  imageUrl: event.detail.imageUrl,
+                  imageWidth: 400,
+                  imageHeight: 200,
+                  imageAlt: event.detail.imageAlt,
+              })
+          })
+    
+          window.addEventListener("showErrorsMessage", event=>{  
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: event.detail.Message,
+            })
+          })
+</script>

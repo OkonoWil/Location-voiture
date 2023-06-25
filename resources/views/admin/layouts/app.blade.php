@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{env('APP_NAME')}}-@yield('title')</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
+    <meta name="author" content="Okono Wilfired">
+    <meta name="description" content="Application laravel de location de voiture">
     <link rel="shortcut icon" href="{{Storage::url('icon/icons8_sausage_barbeque.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('Fontawesome/css/all.css')}}">
 
